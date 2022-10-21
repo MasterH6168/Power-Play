@@ -73,39 +73,39 @@ public class AutoBlueSharedWarehouse extends LinearOpMode {
 //        Spinner = hardwareMap.dcMotor.get("Car");
 //        gyro = hardwareMap.get(ModernRoboticsI2cGyro.class, "Gyro");
 //        grabber = hardwareMap.get(Servo.class, "Grabber");
-
-        frontright.setDirection(DcMotorSimple.Direction.REVERSE);
-        backright.setDirection(DcMotorSimple.Direction.REVERSE);
-
-        InandOut.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        UpandDown.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-
-        InandOut.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        UpandDown.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//
+//        frontright.setDirection(DcMotorSimple.Direction.REVERSE);
+//        backright.setDirection(DcMotorSimple.Direction.REVERSE);
+//
+//        InandOut.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        UpandDown.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//
+//
+//        InandOut.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        UpandDown.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         Vision detector = new Vision(this);
 
 
-        telemetry.addLine("Start Gyro");
-        telemetry.update();
-        gyro.calibrate();
-        while (gyro.isCalibrating()) ;
-        telemetry.addLine("Gyro Calibrated");
-        telemetry.addData("Angle: ", gyro.getIntegratedZValue());
-        telemetry.update();
-
-        grabber.setPosition(1);
+//        telemetry.addLine("Start Gyro");
+//        telemetry.update();
+//        gyro.calibrate();
+//        while (gyro.isCalibrating()) ;
+//        telemetry.addLine("Gyro Calibrated");
+//        telemetry.addData("Angle: ", gyro.getIntegratedZValue());
+//        telemetry.update();
+//
+//        grabber.setPosition(1);
 
         waitForStart();
 
-        telemetry.addData("Duck Left", detector.boxLeft);
-        telemetry.addData("Duck Center", detector.boxCenter);
-        telemetry.addData("Duck Right", detector.boxRight);
-
-        telemetry.addData("leftduckdetected", detector.left_avg);
-        telemetry.addData("leftduckdetected", detector.left_avg);
-        telemetry.update();
+//        telemetry.addData("Duck Left", detector.boxLeft);
+//        telemetry.addData("Duck Center", detector.boxCenter);
+//        telemetry.addData("Duck Right", detector.boxRight);
+//
+//        telemetry.addData("leftduckdetected", detector.left_avg);
+//        telemetry.addData("leftduckdetected", detector.left_avg);
+//        telemetry.update();
 
 
 
