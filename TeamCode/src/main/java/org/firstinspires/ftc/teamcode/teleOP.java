@@ -1,12 +1,19 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 
-@TeleOp(name="TeleOP")
+
+
+
+@TeleOp(name="teleOP")
 public class teleOP extends OpMode {
 
 
@@ -14,18 +21,17 @@ public class teleOP extends OpMode {
     public DcMotor frontleft;
     public DcMotor backright;
     public DcMotor frontright;
-    public DcMotor SpinnerMotor;
-    public DcMotor InandOut;
-    public DcMotor UpandDown;
+    public DcMotor lift;
+    public DcMotor leftgrabber;
+    public DcMotor rightgrabber;
 
-    public Servo Grabber;
 
     public double speedMode = 1;
-
     public boolean xIsHeld = false;
     public boolean bIsHeld = false;
     public boolean dpadLeftIsHeld = false;
     public boolean dpadRightIsHeld = false;
+
 
 
 
@@ -36,58 +42,61 @@ public class teleOP extends OpMode {
         telemetry.update();
 
         //Hardware map
-        backleft = hardwareMap.get(DcMotor.class, "Backleft");
-        frontleft = hardwareMap.get(DcMotor.class, "Frontleft");
-        backright = hardwareMap.get(DcMotor.class, "Backright");
-        frontright = hardwareMap.get(DcMotor.class, "Frontright");
-        SpinnerMotor = hardwareMap.get(DcMotor.class, "Car");
-        InandOut = hardwareMap.get(DcMotor.class, "InandOut");
-        UpandDown = hardwareMap.get(DcMotor.class, "UpandDown");
-        Grabber = hardwareMap.get(Servo.class, "Grabber");
+        backleft = hardwareMap.get(DcMotor.class, "backleft");
+        frontleft = hardwareMap.get(DcMotor.class, "frontleft");
+        backright = hardwareMap.get(DcMotor.class, "backright");
+        frontright = hardwareMap.get(DcMotor.class, "frontright");
+        lift = hardwareMap.get(DcMotor.class, "lift");
+        leftgrabber = hardwareMap.get(DcMotor.class, "leftgrabber");
+        rightgrabber = hardwareMap.get(DcMotor.class, "rightgrabber");
+
 
 
         backleft.setDirection(DcMotor.Direction.FORWARD);
         frontleft.setDirection(DcMotor.Direction.FORWARD);
         backright.setDirection(DcMotor.Direction.REVERSE);
         frontright.setDirection(DcMotor.Direction.REVERSE);
-        SpinnerMotor.setDirection(DcMotor.Direction.FORWARD);
-        InandOut.setDirection(DcMotor.Direction.FORWARD);
-        UpandDown.setDirection(DcMotor.Direction.FORWARD);
-        Grabber.setDirection(Servo.Direction.FORWARD);
+        lift.setDirection(DcMotor.Direction.FORWARD);
+        leftgrabber.setDirection(DcMotor.Direction.FORWARD);
+        rightgrabber.setDirection(DcMotor.Direction.FORWARD);
+
 
 
         backleft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontleft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         backright.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontright.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        InandOut.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        UpandDown.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftgrabber.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightgrabber.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
 
         backleft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         frontleft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backright.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         frontright.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        InandOut.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        UpandDown.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        SpinnerMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftgrabber.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightgrabber.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
 
         backleft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         frontleft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backright.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         frontright.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        InandOut.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        UpandDown.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        leftgrabber.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightgrabber.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+
 
         backleft.setPower(0);
         frontleft.setPower(0);
         backright.setPower(0);
         frontright.setPower(0);
-        SpinnerMotor.setPower(0);
-        InandOut.setPower(0);
-        UpandDown.setPower(0);
-        Grabber.setPosition(1);
-
-
+        lift.setPower(0);
+        leftgrabber.setPower(0);
+        rightgrabber.setPower(0);
 
 
 
@@ -177,114 +186,31 @@ public class teleOP extends OpMode {
         //Drive Train Code
 
 
-
-
-
-        //Grabber Code for Rev Smart Servo
-        if (gamepad2.dpad_left && !dpadLeftIsHeld) {
-            dpadLeftIsHeld = true;
-            Grabber.setPosition(1);
-
-        } else if (gamepad2.dpad_right && !dpadRightIsHeld) {
-            dpadRightIsHeld = true;
-            Grabber.setPosition(.7);
-        } else {
-            //Grabber.setPosition(.5);  //If uncommented, this will make it so you need to hold down the grabber button to keep the grabber closed
-        }
-        if(!gamepad1.dpad_right){
-            dpadRightIsHeld = false;
-        }
-        if(!gamepad2.dpad_left){
-            dpadLeftIsHeld = false;
-        }
-        //Grabber Code for Rev Smart Servo
-
-
-
-
-        //InandOut Code
-        if (gamepad2.right_stick_x >= 0.3) {
-            InandOut.setPower(1);
-        } else if (gamepad2.right_stick_x <= -0.3) {
-            InandOut.setPower(-1);
-        }else{
-            InandOut.setPower(0);
-        }
-        //InandOut Code
-
-
-
-
-        //UpandDown Code
+        //lift code
         if (gamepad2.left_stick_y >= 0.3) {
-            UpandDown.setPower(1);
+            lift.setPower(.5);
         } else if (gamepad2.left_stick_y <= -0.3) {
-            UpandDown.setPower(-1);
+            lift.setPower(-.5);
         }else{
-            UpandDown.setPower(0);
+            lift.setPower(0);
         }
-        //UpandDown Code
 
 
+        //wormhole in
+        if (gamepad2.b){
+            leftgrabber.setPower(1);
+            rightgrabber.setPower(1);
 
 
-        //Level 3= -700
-        //Level 2= -400
-        //Level 1= -150
+        }else if (gamepad2.x){
+            leftgrabber.setPower(-1);
+            rightgrabber.setPower(-1);
 
-        telemetry.addData("Lift Encoders: ", UpandDown.getCurrentPosition());
-        telemetry.update();
-
-
-
-
-
-
-        //Carosel Spinner Code
-        if (gamepad2.left_bumper) {
-            SpinnerMotor.setPower(-.6);
-        }else if (gamepad2.right_bumper) {
-            SpinnerMotor.setPower(.6);
         }else {
-            SpinnerMotor.setPower(0);
+            leftgrabber.setPower(0);
+            rightgrabber.setPower(0);
+
         }
-        //Carosel Spinner Code
-
-
-
-
-        //Blue Carousel Button
-        if (gamepad2.x  && !xIsHeld){
-            xIsHeld = true;
-            SpinnerMotor.setPower(-.55);
-            double target = this.getRuntime() + 1;
-            while(target > this.getRuntime());
-            SpinnerMotor.setPower(-1);
-            double target2 = this.getRuntime() + .1;
-            while(target2 > this.getRuntime());
-        }
-        if(!gamepad2.x){
-            xIsHeld = false;
-        }
-        //Blue Carousel Button
-
-
-
-
-        //Red Carousel Button
-        if (gamepad2.b  && !bIsHeld){
-            bIsHeld = true;
-            SpinnerMotor.setPower(.55);
-            double target = this.getRuntime() + 1;
-            while(target > this.getRuntime());
-            SpinnerMotor.setPower(1);
-            double target2 = this.getRuntime() + .1;
-            while(target2 > this.getRuntime());
-        }
-        if(!gamepad2.b){
-            bIsHeld = false;
-        }
-        //Red Carousel Button
 
 
 
