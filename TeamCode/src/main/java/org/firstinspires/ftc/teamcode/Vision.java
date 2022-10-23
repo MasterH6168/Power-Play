@@ -23,17 +23,19 @@ public class Vision {
     private final Point centerBox_topLeft    = new Point(130,60);
     private final Point centerBox_bottomRight    = new Point(180, 110);
 
-    private final Point leftBox_topLeft    = new Point(0,60);
-    private final Point leftBox_bottomRight    = new Point(30, 110);
-
-    private final Point rightBox_topLeft    = new Point(280,60);
-    private final Point rightBox_bottomRight    = new Point(320, 110);
+//    private final Point leftBox_topLeft    = new Point(0,60);
+//    private final Point leftBox_bottomRight    = new Point(30, 110);
+//
+//    private final Point rightBox_topLeft    = new Point(280,60);
+//    private final Point rightBox_bottomRight    = new Point(320, 110);
 
     Mat YCrCb = new Mat();
-    Mat Cb = new Mat();
-    Mat region_left_Cb, region_center_Cb, region_right_Cb;
-    int left_avg, center_avg, right_avg;
-    boolean boxLeft = false, boxRight = false, boxCenter = false;
+    Mat red = new Mat();
+    Mat green = new Mat();
+    Mat blue = new Mat();
+    Mat region_center_red, region_center_green, region_center_blue;
+    int red_avg, green_avg, blue_avg;
+    boolean one = false, two = false, three = false;
 
 
     public Vision(OpMode op){
@@ -61,8 +63,11 @@ public class Vision {
 
         void inputToColors(Mat input)
         {
-            Imgproc.cvtColor(input, YCrCb, Imgproc.COLOR_RGB2YCrCb);
-            Core.extractChannel(YCrCb, Cb, 2);
+            //Imgproc.cvtColor(input, YCrCb, Imgproc.COLOR_RGB2YCrCb);
+            Core.extractChannel(input, red, 0);
+            Core.extractChannel(input, green, 1);
+            Core.extractChannel(input, blue, 2);
+
         }
 
         @Override
@@ -70,9 +75,11 @@ public class Vision {
         {
             inputToColors(firstFrame);
 
-            region_left_Cb = Cb.submat(new Rect(leftBox_topLeft,leftBox_bottomRight));
-            region_center_Cb = Cb.submat(new Rect(centerBox_topLeft,centerBox_bottomRight));
-            region_right_Cb = Cb.submat(new Rect(rightBox_topLeft,rightBox_bottomRight));
+//            region_left_Cb = Cb.submat(new Rect(leftBox_topLeft,leftBox_bottomRight));
+            region_center_red = red.submat(new Rect(centerBox_topLeft,centerBox_bottomRight));
+            region_center_green = green.submat(new Rect(centerBox_topLeft,centerBox_bottomRight));
+            region_center_blue = blue.submat(new Rect(centerBox_topLeft,centerBox_bottomRight));
+//            region_right_Cb = Cb.submat(new Rect(rightBox_topLeft,rightBox_bottomRight));
         }
 
         //This processes the visual output on the screen
@@ -81,50 +88,53 @@ public class Vision {
 
             inputToColors(input);
 
-            left_avg = (int) Core.mean(region_left_Cb).val[0];
-            center_avg = (int) Core.mean(region_center_Cb).val[0];
-            right_avg = (int) Core.mean(region_right_Cb).val[0];
+            //left_avg = (int) Core.mean(region_left_Cb).val[0];
+            red_avg = (int) Core.mean(region_center_red).val[0];
+            green_avg = (int) Core.mean(region_center_green).val[0];
+            blue_avg = (int) Core.mean(region_center_blue).val[0];
 
-            //opMode.telemetry.addData("boxLeft: ", left_avg);
-            if(left_avg <= center_avg && left_avg <= right_avg){
-                boxLeft = true;
-                boxCenter = false;
-                boxRight = false;
-            }
+            //right_avg = (int) Core.mean(region_right_Cb).val[0];
 
             //opMode.telemetry.addData("boxCenter: ", center_avg);
-            else if(center_avg <= left_avg && center_avg <= right_avg){
-                boxLeft = false;
-                boxCenter = true;
-                boxRight = false;
+            //opMode.telemetry.addData("boxLeft: ", left_avg);
+            if(red_avg >= 200){
+                one = true;
+                two = false;
+                three = false;
+            }
+
+            else if(green_avg >= 200){
+                one = false;
+                two = true;
+                three = false;
             }
 
             //opMode.telemetry.addData("boxRight: ", right_avg);
             //opMode.telemetry.update();
 //            else if(right_avg <= left_avg && right_avg <= center_avg){
             else{
-                boxLeft = false;
-                boxCenter = false;
-                boxRight = true;
+                one = false;
+                two = false;
+                three = true;
             }
 
             int thickness = 3;
-            Scalar leftColor = new Scalar(255,0,0);
-            Scalar centerColor = new Scalar(255,0,0);
-            Scalar rightColor = new Scalar(255,0,0);
+            Scalar red = new Scalar(0,0,0);
+            Scalar green = new Scalar(0,0,0);
+            Scalar blue = new Scalar(0,0,0);
 
-            if (boxLeft){
-                leftColor = new Scalar(0,255,0);
+            if (one){
+                red = new Scalar(255,0,0);
             }
-            else if (boxCenter){
-                centerColor = new Scalar(0,255,0);
+            else if (two){
+                green = new Scalar(0,255,0);
             } else {
-                rightColor = new Scalar(0,255,0);
+                blue = new Scalar(0,0,255);
             }
 
-            Imgproc.rectangle(input, leftBox_topLeft, leftBox_bottomRight, leftColor, thickness);
-            Imgproc.rectangle(input, centerBox_topLeft, centerBox_bottomRight, centerColor, thickness);
-            Imgproc.rectangle(input, rightBox_topLeft, rightBox_bottomRight, rightColor, thickness);
+//            Imgproc.rectangle(input, leftBox_topLeft, leftBox_bottomRight, leftColor, thickness);
+            Imgproc.rectangle(input, centerBox_topLeft, centerBox_bottomRight, red, thickness);
+//            Imgproc.rectangle(input, rightBox_topLeft, rightBox_bottomRight, rightColor, thickness);
 
             return input;
         }
