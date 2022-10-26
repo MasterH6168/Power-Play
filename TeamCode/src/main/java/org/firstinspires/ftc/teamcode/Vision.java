@@ -75,11 +75,10 @@ public class Vision {
         {
             inputToColors(firstFrame);
 
-//            region_left_Cb = Cb.submat(new Rect(leftBox_topLeft,leftBox_bottomRight));
             region_center_red = red.submat(new Rect(centerBox_topLeft,centerBox_bottomRight));
             region_center_green = green.submat(new Rect(centerBox_topLeft,centerBox_bottomRight));
             region_center_blue = blue.submat(new Rect(centerBox_topLeft,centerBox_bottomRight));
-//            region_right_Cb = Cb.submat(new Rect(rightBox_topLeft,rightBox_bottomRight));
+
         }
 
         //This processes the visual output on the screen
@@ -88,25 +87,26 @@ public class Vision {
 
             inputToColors(input);
 
-            //left_avg = (int) Core.mean(region_left_Cb).val[0];
+
             red_avg = (int) Core.mean(region_center_red).val[0];
             green_avg = (int) Core.mean(region_center_green).val[0];
             blue_avg = (int) Core.mean(region_center_blue).val[0];
 
-            //right_avg = (int) Core.mean(region_right_Cb).val[0];
+            opMode.telemetry.addData("RED: ", red_avg);
+            opMode.telemetry.addData("GREEN: ", green_avg);
+            opMode.telemetry.addData("BLUE: ", blue_avg);
+            opMode.telemetry.update();
 
-            //opMode.telemetry.addData("boxCenter: ", center_avg);
-            //opMode.telemetry.addData("boxLeft: ", left_avg);
-            if(red_avg >= 200){
+            if(red_avg >= 130){
                 one = true;
                 two = false;
                 three = false;
             }
 
-            else if(green_avg >= 200){
+            else if(blue_avg >= 130){
                 one = false;
-                two = true;
-                three = false;
+                two = false;
+                three = true;
             }
 
             //opMode.telemetry.addData("boxRight: ", right_avg);
@@ -114,8 +114,8 @@ public class Vision {
 //            else if(right_avg <= left_avg && right_avg <= center_avg){
             else{
                 one = false;
-                two = false;
-                three = true;
+                two = true;
+                three = false;
             }
 
             int thickness = 3;
@@ -125,16 +125,15 @@ public class Vision {
 
             if (one){
                 red = new Scalar(255,0,0);
+                Imgproc.rectangle(input, centerBox_topLeft, centerBox_bottomRight, red, thickness);
             }
             else if (two){
                 green = new Scalar(0,255,0);
+                Imgproc.rectangle(input, centerBox_topLeft, centerBox_bottomRight, green, thickness);
             } else {
                 blue = new Scalar(0,0,255);
+                Imgproc.rectangle(input, centerBox_topLeft, centerBox_bottomRight, blue, thickness);
             }
-
-//            Imgproc.rectangle(input, leftBox_topLeft, leftBox_bottomRight, leftColor, thickness);
-            Imgproc.rectangle(input, centerBox_topLeft, centerBox_bottomRight, red, thickness);
-//            Imgproc.rectangle(input, rightBox_topLeft, rightBox_bottomRight, rightColor, thickness);
 
             return input;
         }
