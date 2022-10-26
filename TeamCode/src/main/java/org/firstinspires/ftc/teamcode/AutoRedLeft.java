@@ -114,7 +114,7 @@ public class AutoRedLeft extends LinearOpMode {
         leftgrabber.setPower(0);
         rightgrabber.setPower(0);
 
-        Vision detector = new Vision(this);
+        LeftVision detector = new LeftVision(this);
 
 
         telemetry.addLine("Start Gyro");
@@ -140,7 +140,7 @@ public class AutoRedLeft extends LinearOpMode {
         if (detector.one = true) {
 
         } else if (detector.two = true) {
-            
+
         } else {
 
         }

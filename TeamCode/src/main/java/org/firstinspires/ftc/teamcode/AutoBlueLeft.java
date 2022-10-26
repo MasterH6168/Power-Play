@@ -117,7 +117,7 @@ public class AutoBlueLeft extends LinearOpMode {
         leftgrabber.setPower(0);
         rightgrabber.setPower(0);
 
-        Vision detector = new Vision(this);
+        LeftVision detector = new LeftVision(this);
 
 
         telemetry.addLine("Start Gyro");
