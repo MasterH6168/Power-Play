@@ -20,7 +20,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 @Autonomous(name="BlueRight")
-public class AutoBlueLeft extends LinearOpMode {
+public class AutoBlueRight extends LinearOpMode {
     //
     DcMotor frontleft;
     DcMotor frontright;
@@ -142,9 +142,12 @@ public class AutoBlueLeft extends LinearOpMode {
 
         if (detector.one = true) {
 
+
         } else if (detector.two = true) {
 
+
         } else {
+//
 
         }
 

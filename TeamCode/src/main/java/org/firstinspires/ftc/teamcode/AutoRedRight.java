@@ -19,8 +19,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-@Autonomous(name="BlueRight")
-public class AutoBlueLeft extends LinearOpMode {
+@Autonomous(name="RedRight")
+public class AutoRedRight extends LinearOpMode {
     //
     DcMotor frontleft;
     DcMotor frontright;
@@ -142,9 +142,50 @@ public class AutoBlueLeft extends LinearOpMode {
 
         if (detector.one = true) {
 
-        } else if (detector.two = true) {
+            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
+            golift(10, 1);
+            strafeToPosition(-20, 1);
+            drop(-1);
+            strafeToPosition(6, 1);
+            golift(-10,1);
+            gyroDrive(DRIVE_SPEED,10,10,10,10,0);
+            drop(1);
+            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
+            golift(10, 1);
+            strafeToPosition(-20, 1);
+            drop(-1);
+            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
 
+        } else if (detector.two = true) {
+            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
+            golift(10, 1);
+            strafeToPosition(-20, 1);
+            drop(-1);
+            strafeToPosition(6, 1);
+            golift(-10,1);
+            gyroDrive(DRIVE_SPEED,10,10,10,10,0);
+            drop(1);
+            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
+            golift(10, 1);
+            strafeToPosition(-20, 1);
+            drop(-1);
+            strafeToPosition(20, 1);
+            gyroDrive(DRIVE_SPEED,10,10,10,10,0);
         } else {
+            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
+            golift(10, 1);
+            strafeToPosition(-20, 1);
+            drop(-1);
+            strafeToPosition(6, 1);
+            golift(-10,1);
+            gyroDrive(DRIVE_SPEED,10,10,10,10,0);
+            drop(1);
+            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
+            golift(10, 1);
+            strafeToPosition(-20, 1);
+            drop(-1);
+            strafeToPosition(20, 1);
+            gyroDrive(DRIVE_SPEED,30,30,30,30,0);
 
         }
 
