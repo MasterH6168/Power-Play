@@ -145,51 +145,58 @@ public class AutoRedRight extends LinearOpMode {
             gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
             golift(10, 1);
             strafeToPosition(-20, 1);
-            drop(-1);
+            gyroDrive(DRIVE_SPEED, 2, 2, 2, 2, 0);
+            sucker(-1);
             strafeToPosition(6, 1);
+            gyroDrive(DRIVE_SPEED, 10,10,10,10,0);
             golift(-10,1);
-            gyroDrive(DRIVE_SPEED,10,10,10,10,0);
-            drop(1);
+            sucker(1);
+            golift(10,1);
+            gyroDrive(DRIVE_SPEED, -10,-10,-10,-10,0);
+            strafeToPosition(-7,1);
+            sucker(-1);
+            gyroDrive(DRIVE_SPEED, -3,-3,-3,-3,0);
+
+
+        } else if (detector.two = true) {
+
             gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
             golift(10, 1);
             strafeToPosition(-20, 1);
-            drop(-1);
-            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
+            gyroDrive(DRIVE_SPEED, 2, 2, 2, 2, 0);
+            sucker(-1);
+            strafeToPosition(6, 1);
+            gyroDrive(DRIVE_SPEED, 10,10,10,10,0);
+            golift(-10,1);
+            sucker(1);
+            golift(10,1);
+            gyroDrive(DRIVE_SPEED, -10,-10,-10,-10,0);
+            strafeToPosition(-7,1);
+            sucker(-1);
+            strafeToPosition(7,1);
+            gyroDrive(DRIVE_SPEED, 10,10,10,10,0);
 
-        } else if (detector.two = true) {
-//            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
-//            golift(10, 1);
-//            strafeToPosition(-20, 1);
-//            drop(-1);
-//            strafeToPosition(6, 1);
-//            golift(-10,1);
-//            gyroDrive(DRIVE_SPEED,10,10,10,10,0);
-//            drop(1);
-//            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
-//            golift(10, 1);
-//            strafeToPosition(-20, 1);
-//            drop(-1);
-//            strafeToPosition(20, 1);
-//            gyroDrive(DRIVE_SPEED,10,10,10,10,0);
+
         } else {
-//            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
-//            golift(10, 1);
-//            strafeToPosition(-20, 1);
-//            drop(-1);
-//            strafeToPosition(6, 1);
-//            golift(-10,1);
-//            gyroDrive(DRIVE_SPEED,10,10,10,10,0);
-//            drop(1);
-//            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
-//            golift(10, 1);
-//            strafeToPosition(-20, 1);
-//            drop(-1);
-//            strafeToPosition(20, 1);
-//            gyroDrive(DRIVE_SPEED,30,30,30,30,0);
+
+            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
+            golift(10, 1);
+            strafeToPosition(-20, 1);
+            gyroDrive(DRIVE_SPEED, 2, 2, 2, 2, 0);
+            sucker(-1);
+            strafeToPosition(6, 1);
+            gyroDrive(DRIVE_SPEED, 10,10,10,10,0);
+            golift(-10,1);
+            sucker(1);
+            golift(10,1);
+            gyroDrive(DRIVE_SPEED, -10,-10,-10,-10,0);
+            strafeToPosition(-7,1);
+            sucker(-1);
+            strafeToPosition(7,1);
+            gyroDrive(DRIVE_SPEED, 20,20,20,20,0);
+
 
         }
-
-
     }
 
     public void golift(double inches, double speed){
@@ -201,7 +208,7 @@ public class AutoRedRight extends LinearOpMode {
     }
 
 
-    public void drop(double speed){
+    public void sucker(double speed){
         while(lift.isBusy()){
         }
         rightgrabber.setPower(speed);
