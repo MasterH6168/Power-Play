@@ -32,7 +32,7 @@ public class AutoRedRight extends LinearOpMode {
 
     //28 * 20 / (2ppi * 4.125)
     Double width = 16.0; //inches
-    Integer cpr = 28; //counts per rotation
+    Integer cpr = 13; //counts per rotation
     Integer gearratio = 40;
     Double diameter = 4.125;
     Double cpi = (cpr * gearratio) / (Math.PI * diameter); //counts per inch, 28cpr * gear ratio / (2 * pi * diameter (in inches, in the center))
@@ -139,32 +139,29 @@ public class AutoRedRight extends LinearOpMode {
 
         if (detector.one = true) {
 
-            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
-            golift(10, 1);
-            strafeToPosition(20, 1);
-            gyroDrive(DRIVE_SPEED, 2, 2, 2, 2, 0);
+            gyroDrive(DRIVE_SPEED, 23, 23, 23, 23, 0);
+            strafeToPosition(60, .5);
+            gyroTurn(TURN_SPEED, 5);
+            golift(85, 1);
+            strafeToPosition(32, .5);
+            gyroDrive(DRIVE_SPEED, -9, -9, -9, -9, 0);
             sucker(-1);
-            gyroDrive(DRIVE_SPEED, -10,-10,-10,-10,0);
+            gyroDrive(DRIVE_SPEED, 9, 9,9,9,0);
+            strafeToPosition(-20, .5);
+
+
+
+//            gyroDrive(DRIVE_SPEED, 2, 2, 2, 2, 0);
+//            sucker(-1);
+//            gyroDrive(DRIVE_SPEED, -10,-10,-10,-10,0);
 
         } else if (detector.two = true) {
 
-            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
-            golift(10, 1);
-            strafeToPosition(20, 1);
-            gyroDrive(DRIVE_SPEED, 2, 2, 2, 2, 0);
-            sucker(-1);
-            strafeToPosition(6, 1);
-            gyroDrive(DRIVE_SPEED, 10,10,10,10,0);
+
 
         } else {
 
-            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
-            golift(10, 1);
-            strafeToPosition(20, 1);
-            gyroDrive(DRIVE_SPEED, 2, 2, 2, 2, 0);
-            sucker(-1);
-            strafeToPosition(6, 1);
-            gyroDrive(DRIVE_SPEED, 20,20,20,20,0);
+
 
         }
 
