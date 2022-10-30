@@ -2,14 +2,10 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
-//import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
@@ -21,7 +17,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 @Autonomous(name="RedRight")
 public class AutoRedRight extends LinearOpMode {
-    //
+
     DcMotor frontleft;
     DcMotor frontright;
     DcMotor backleft;
@@ -60,7 +56,7 @@ public class AutoRedRight extends LinearOpMode {
 
     public void runOpMode() throws InterruptedException {
 
-        //initGyro();
+        initGyro();
 
         frontleft = hardwareMap.dcMotor.get("frontleft");
         frontright = hardwareMap.dcMotor.get("frontright");
@@ -69,6 +65,7 @@ public class AutoRedRight extends LinearOpMode {
         lift = hardwareMap.get(DcMotor.class, "lift");
         leftgrabber = hardwareMap.get(DcMotor.class, "leftgrabber");
         rightgrabber = hardwareMap.get(DcMotor.class, "rightgrabber");
+        gyro = hardwareMap.get(ModernRoboticsI2cGyro.class, "Gyro");
 
 
 
@@ -144,59 +141,34 @@ public class AutoRedRight extends LinearOpMode {
 
             gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
             golift(10, 1);
-            strafeToPosition(-20, 1);
+            strafeToPosition(20, 1);
             gyroDrive(DRIVE_SPEED, 2, 2, 2, 2, 0);
             sucker(-1);
-            strafeToPosition(6, 1);
-            gyroDrive(DRIVE_SPEED, 10,10,10,10,0);
-            golift(-10,1);
-            sucker(1);
-            golift(10,1);
             gyroDrive(DRIVE_SPEED, -10,-10,-10,-10,0);
-            strafeToPosition(-7,1);
-            sucker(-1);
-            gyroDrive(DRIVE_SPEED, -3,-3,-3,-3,0);
-
 
         } else if (detector.two = true) {
 
             gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
             golift(10, 1);
-            strafeToPosition(-20, 1);
+            strafeToPosition(20, 1);
             gyroDrive(DRIVE_SPEED, 2, 2, 2, 2, 0);
             sucker(-1);
             strafeToPosition(6, 1);
             gyroDrive(DRIVE_SPEED, 10,10,10,10,0);
-            golift(-10,1);
-            sucker(1);
-            golift(10,1);
-            gyroDrive(DRIVE_SPEED, -10,-10,-10,-10,0);
-            strafeToPosition(-7,1);
-            sucker(-1);
-            strafeToPosition(7,1);
-            gyroDrive(DRIVE_SPEED, 10,10,10,10,0);
-
 
         } else {
 
             gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
             golift(10, 1);
-            strafeToPosition(-20, 1);
+            strafeToPosition(20, 1);
             gyroDrive(DRIVE_SPEED, 2, 2, 2, 2, 0);
             sucker(-1);
             strafeToPosition(6, 1);
-            gyroDrive(DRIVE_SPEED, 10,10,10,10,0);
-            golift(-10,1);
-            sucker(1);
-            golift(10,1);
-            gyroDrive(DRIVE_SPEED, -10,-10,-10,-10,0);
-            strafeToPosition(-7,1);
-            sucker(-1);
-            strafeToPosition(7,1);
             gyroDrive(DRIVE_SPEED, 20,20,20,20,0);
 
-
         }
+
+
     }
 
     public void golift(double inches, double speed){

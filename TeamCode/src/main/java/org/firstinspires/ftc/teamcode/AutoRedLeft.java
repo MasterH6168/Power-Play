@@ -57,7 +57,7 @@ public class AutoRedLeft extends LinearOpMode {
 
     public void runOpMode() throws InterruptedException {
 
-        //initGyro();
+        initGyro();
 
         frontleft = hardwareMap.dcMotor.get("frontleft");
         frontright = hardwareMap.dcMotor.get("frontright");
@@ -139,9 +139,32 @@ public class AutoRedLeft extends LinearOpMode {
 
         if (detector.one = true) {
 
+            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
+            golift(10, 1);
+            strafeToPosition(20, 1);
+            gyroDrive(DRIVE_SPEED, 2, 2, 2, 2, 0);
+            sucker(-1);
+            gyroDrive(DRIVE_SPEED, -10,-10,-10,-10,0);
+
         } else if (detector.two = true) {
 
+            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
+            golift(10, 1);
+            strafeToPosition(20, 1);
+            gyroDrive(DRIVE_SPEED, 2, 2, 2, 2, 0);
+            sucker(-1);
+            strafeToPosition(6, 1);
+            gyroDrive(DRIVE_SPEED, 10,10,10,10,0);
+
         } else {
+
+            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
+            golift(10, 1);
+            strafeToPosition(20, 1);
+            gyroDrive(DRIVE_SPEED, 2, 2, 2, 2, 0);
+            sucker(-1);
+            strafeToPosition(6, 1);
+            gyroDrive(DRIVE_SPEED, 20,20,20,20,0);
 
         }
 
@@ -157,7 +180,7 @@ public class AutoRedLeft extends LinearOpMode {
     }
 
 
-    public void drop(double speed){
+    public void sucker(double speed){
         while(lift.isBusy()){
         }
         rightgrabber.setPower(speed);
