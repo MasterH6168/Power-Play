@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
-//import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -16,9 +15,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-@Autonomous(name="RedLeft")
-public class AutoRedLeft extends LinearOpMode {
-    //
+@Autonomous(name="Left")
+public class AutoLeft extends LinearOpMode {
+
     DcMotor frontleft;
     DcMotor frontright;
     DcMotor backleft;
@@ -33,7 +32,7 @@ public class AutoRedLeft extends LinearOpMode {
 
     //28 * 20 / (2ppi * 4.125)
     Double width = 16.0; //inches
-    Integer cpr = 28; //counts per rotation
+    Integer cpr = 13; //counts per rotation
     Integer gearratio = 40;
     Double diameter = 4.125;
     Double cpi = (cpr * gearratio) / (Math.PI * diameter); //counts per inch, 28cpr * gear ratio / (2 * pi * diameter (in inches, in the center))
@@ -45,7 +44,7 @@ public class AutoRedLeft extends LinearOpMode {
     static final double P_TURN_COEFF = 0.1;     // Larger is more responsive, but also less stable
     static final double P_DRIVE_COEFF = 0.07;     // Larger is more responsive, but also less stable
 
-    double DRIVE_SPEED = 0.4;
+    double DRIVE_SPEED = 0.32;
     double TURN_SPEED = 0.4;
 
     Double conversion = cpi * bias;
@@ -66,6 +65,7 @@ public class AutoRedLeft extends LinearOpMode {
         lift = hardwareMap.get(DcMotor.class, "lift");
         leftgrabber = hardwareMap.get(DcMotor.class, "leftgrabber");
         rightgrabber = hardwareMap.get(DcMotor.class, "rightgrabber");
+        gyro = hardwareMap.get(ModernRoboticsI2cGyro.class, "Gyro");
 
 
 
@@ -124,6 +124,7 @@ public class AutoRedLeft extends LinearOpMode {
         telemetry.addLine("Gyro Calibrated");
         telemetry.addData("Angle: ", gyro.getIntegratedZValue());
         telemetry.update();
+        sleep(2000);
 
 
         waitForStart();
@@ -137,34 +138,96 @@ public class AutoRedLeft extends LinearOpMode {
         //mid =
         //low =
 
-        if (detector.one = true) {
 
-            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
-            golift(10, 1);
-            strafeToPosition(20, 1);
-            gyroDrive(DRIVE_SPEED, 2, 2, 2, 2, 0);
-            sucker(-1);
-            gyroDrive(DRIVE_SPEED, -10,-10,-10,-10,0);
 
-        } else if (detector.two = true) {
+        if (detector.one == true) {
 
-            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
-            golift(10, 1);
-            strafeToPosition(20, 1);
-            gyroDrive(DRIVE_SPEED, 2, 2, 2, 2, 0);
-            sucker(-1);
-            strafeToPosition(6, 1);
-            gyroDrive(DRIVE_SPEED, 10,10,10,10,0);
 
-        } else {
+            gyroDrive(DRIVE_SPEED, 23, 23, 23, 23, 0);
+            strafeToPosition(-59, .5);
+            gyroTurn(TURN_SPEED, 0);
+            golift(85, 1);
+            strafeToPosition(-31, .4);
+            gyroDrive(DRIVE_SPEED, -8, -8, -8, -8, 0);
+            sleep(100);
+            letgogirl();
+            gyroDrive(DRIVE_SPEED, 5, 5,5,5,0);
+            strafeToPosition(22, .2);
+            golift(-60, .4);
+            gyroDrive(.3, -60, -60, -60, -60,0);
+            golift(-11,.3);
+            getitgirl();
+            golift(74, .8);
+            gyroDrive(DRIVE_SPEED, 56, 56, 56, 56,0);
+            gyroTurn(.2,0);
+            strafeToPosition(-21, .3);
+            gyroTurn(.2,0);
+            gyroDrive(.2, -3.7, -3.7, -3.7, -3.7, 0);
+            sleep(100);
+            letgogirl();
+            gyroDrive(DRIVE_SPEED, 5, 5,5,5,0);
+            strafeToPosition(23, .3);
+            gyroDrive(DRIVE_SPEED,-54,-54,-54,-54,0);
 
-            gyroDrive(DRIVE_SPEED, -10, -10, -10, -10, 0);
-            golift(10, 1);
-            strafeToPosition(20, 1);
-            gyroDrive(DRIVE_SPEED, 2, 2, 2, 2, 0);
-            sucker(-1);
-            strafeToPosition(6, 1);
-            gyroDrive(DRIVE_SPEED, 20,20,20,20,0);
+
+
+        } else if (detector.two == true) {
+
+            gyroDrive(DRIVE_SPEED, 23, 23, 23, 23, 0);
+            strafeToPosition(-59, .5);
+            gyroTurn(TURN_SPEED, 0);
+            golift(85, 1);
+            strafeToPosition(-31, .4);
+            gyroDrive(DRIVE_SPEED, -8, -8, -8, -8, 0);
+            sleep(100);
+            letgogirl();
+            gyroDrive(DRIVE_SPEED, 5, 5,5,5,0);
+            strafeToPosition(22, .2);
+            golift(-60, .4);
+            gyroDrive(.3, -60, -60, -60, -60,0);
+            golift(-11,.3);
+            getitgirl();
+            golift(74, .8);
+            gyroDrive(DRIVE_SPEED, 56, 56, 56, 56,0);
+            gyroTurn(.2,0);
+            strafeToPosition(-21, .3);
+            gyroTurn(.2,0);
+            gyroDrive(.2, -3.7, -3.7, -3.7, -3.7, 0);
+            sleep(100);
+            letgogirl();
+            gyroDrive(DRIVE_SPEED, 5, 5,5,5,0);
+            strafeToPosition(21, .3);
+            gyroDrive(DRIVE_SPEED,-27,-27,-27,-27,0);
+
+
+
+        } else if (detector.three == true) {
+
+            gyroDrive(DRIVE_SPEED, 23, 23, 23, 23, 0);
+            strafeToPosition(-59, .5);
+            gyroTurn(TURN_SPEED, 0);
+            golift(85, 1);
+            strafeToPosition(-31, .4);
+            gyroDrive(DRIVE_SPEED, -8, -8, -8, -8, 0);
+            sleep(100);
+            letgogirl();
+            gyroDrive(DRIVE_SPEED, 5, 5,5,5,0);
+            strafeToPosition(22, .2);
+            golift(-60, .4);
+            gyroDrive(.3, -60, -60, -60, -60,0);
+            golift(-11,.3);
+            getitgirl();
+            golift(74, .8);
+            gyroDrive(DRIVE_SPEED, 56, 56, 56, 56,0);
+            gyroTurn(.2,0);
+            strafeToPosition(-21, .3);
+            gyroTurn(.2,0);
+            gyroDrive(.2, -3.7, -3.7, -3.7, -3.7, 0);
+            sleep(100);
+            letgogirl();
+            gyroDrive(DRIVE_SPEED, 5, 5,5,5,0);
+            strafeToPosition(21, .3);
+
 
         }
 
@@ -180,14 +243,28 @@ public class AutoRedLeft extends LinearOpMode {
     }
 
 
-    public void sucker(double speed){
+    public void letgogirl(){
         while(lift.isBusy()){
         }
-        rightgrabber.setPower(speed);
-        leftgrabber.setPower(speed);
-        sleep(1000);
-
+        rightgrabber.setPower(-1);
+        leftgrabber.setPower(-1);
+        sleep(700);
+        rightgrabber.setPower(0);
+        leftgrabber.setPower(0);
     }
+
+
+    public void getitgirl(){
+        while(lift.isBusy()){
+        }
+        rightgrabber.setPower(.7);
+        leftgrabber.setPower(.7);
+        sleep(1200);
+        rightgrabber.setPower(0);
+        leftgrabber.setPower(0);
+    }
+
+
 
 
     public void turnWithGyro(double degrees, double speedDirection) {

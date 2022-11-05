@@ -20,14 +20,13 @@ public class LeftVision {
 
     AddBoxesPipeline pipeline;
 
-    private final Point centerBox_topLeft    = new Point(130,60);
-    private final Point centerBox_bottomRight    = new Point(180, 110);
+    private final Point centerBox_topLeft    = new Point(59.5,58);
+    private final Point centerBox_bottomRight    = new Point(106, 130);
 
-//    private final Point leftBox_topLeft    = new Point(0,60);
-//    private final Point leftBox_bottomRight    = new Point(30, 110);
-//
-//    private final Point rightBox_topLeft    = new Point(280,60);
-//    private final Point rightBox_bottomRight    = new Point(320, 110);
+//    private final Point centerBox_topLeft    = new Point(230,30);
+//    private final Point centerBox_bottomRight    = new Point(190, 100);
+
+
 
     Mat YCrCb = new Mat();
     Mat red = new Mat();
@@ -45,7 +44,7 @@ public class LeftVision {
         int cameraMonitorViewId = opMode.hardwareMap.appContext.getResources().getIdentifier(
                 "cameraMonitorViewId", "id", opMode.hardwareMap.appContext.getPackageName());
 
-        camera = OpenCvCameraFactory.getInstance().createWebcam(opMode.hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
+        camera = OpenCvCameraFactory.getInstance().createWebcam(opMode.hardwareMap.get(WebcamName.class, "Webcam Red"), cameraMonitorViewId);
 
         pipeline = new AddBoxesPipeline();
         camera.openCameraDevice();
@@ -92,18 +91,18 @@ public class LeftVision {
             green_avg = (int) Core.mean(region_center_green).val[0];
             blue_avg = (int) Core.mean(region_center_blue).val[0];
 
-            opMode.telemetry.addData("RED: ", red_avg);
-            opMode.telemetry.addData("GREEN: ", green_avg);
-            opMode.telemetry.addData("BLUE: ", blue_avg);
-            opMode.telemetry.update();
+//            opMode.telemetry.addData("RED: ", red_avg);
+//            opMode.telemetry.addData("GREEN: ", green_avg);
+//            opMode.telemetry.addData("BLUE: ", blue_avg);
+//            opMode.telemetry.update();
 
-            if(red_avg >= 130){
+            if(red_avg >= 120){
                 one = true;
                 two = false;
                 three = false;
             }
 
-            else if(blue_avg >= 130){
+            else if(blue_avg >= 120){
                 one = false;
                 two = false;
                 three = true;
