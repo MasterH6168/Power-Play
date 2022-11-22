@@ -46,6 +46,7 @@ public class AutoRight extends LinearOpMode {
 
     double DRIVE_SPEED = 0.32;
     double TURN_SPEED = 0.4;
+    double DRIVE_ANGLE = 0;
 
     Double conversion = cpi * bias;
     Boolean exit = false;
@@ -134,6 +135,7 @@ public class AutoRight extends LinearOpMode {
         telemetry.addData("Blue", detector.red);
 
         //neg strafe = left strafing
+
         //high =
         //mid =
         //low =
@@ -143,85 +145,85 @@ public class AutoRight extends LinearOpMode {
         if (detector.one == true) {
 
 
-            gyroDrive(DRIVE_SPEED, 23, 23, 23, 23, 0);
-            strafeToPosition(59, .5);
+            gyroDrive(DRIVE_SPEED, 23, 23, 23, 23, DRIVE_ANGLE);
+            strafeToPosition(59,59,59,59, .5);
             gyroTurn(TURN_SPEED, 5);
             golift(85, 1);
-            strafeToPosition(32, .5);
-            gyroDrive(DRIVE_SPEED, -8.5, -8.5, -8.5, -8.5, 0);
+            strafeToPosition(32, 32,32,32,.5);
+            gyroDrive(DRIVE_SPEED, -9, -9, -9, -9, DRIVE_ANGLE);
             sleep(100);
             letgogirl();
-            gyroDrive(DRIVE_SPEED, 8, 8,8,8,0);
-            strafeToPosition(-16, .2);
+            gyroDrive(DRIVE_SPEED, 8, 8,8,8,DRIVE_ANGLE);
+            strafeToPosition(-16.22, -16.22,-16.22,-16.22,.2);
             golift(-60, .4);
-            gyroDrive(.3, -60, -60, -60, -60,0);
+            gyroDrive(.3, -60, -60, -60, -60,DRIVE_ANGLE);
             golift(-11,.3);
             getitgirl();
             golift(74, .8);
-            gyroDrive(DRIVE_SPEED, 59, 59, 59, 59,0);
-            strafeToPosition(17.5, .3);
-            gyroDrive(.2, -8.1, -8.1, -8.1, -8.1, 0);
+            gyroDrive(DRIVE_SPEED, 59, 59, 59, 59,DRIVE_ANGLE);
+            strafeToPosition(17, 17,17,17,.3);
+            gyroDrive(.2, -6.5, -6.5, -6.5, -6.5, DRIVE_ANGLE);
             sleep(100);
             letgogirl();
-            gyroDrive(DRIVE_SPEED, 7, 7,7,7,0);
-            strafeToPosition(-20, .3);
+            gyroDrive(DRIVE_SPEED, 7, 7,7,7,DRIVE_ANGLE);
+            strafeToPosition(-20, -20,-20,-20,.3);
 
 
 
 
         } else if (detector.two == true) {
-
-            gyroDrive(DRIVE_SPEED, 23, 23, 23, 23, 0);
-            strafeToPosition(59, .5);
-            gyroTurn(TURN_SPEED, 5);
-            golift(85, 1);
-            strafeToPosition(32, .5);
-            gyroDrive(DRIVE_SPEED, -8.5, -8.5, -8.5, -8.5, 0);
-            sleep(100);
-            letgogirl();
-            gyroDrive(DRIVE_SPEED, 8, 8,8,8,0);
-            strafeToPosition(-16, .2);
-            golift(-60, .4);
-            gyroDrive(.3, -60, -60, -60, -60,0);
-            golift(-11,.3);
-            getitgirl();
-            golift(74, .8);
-            gyroDrive(DRIVE_SPEED, 59, 59, 59, 59,0);
-            strafeToPosition(17.5, .3);
-            gyroDrive(.2, -8.1, -8.1, -8.1, -8.1, 0);
-            sleep(100);
-            letgogirl();
-            gyroDrive(DRIVE_SPEED, 7, 7,7,7,0);
-            strafeToPosition(-17, .3);
-            gyroDrive(DRIVE_SPEED,-30,-30,-30,-30,0);
+//
+//            gyroDrive(DRIVE_SPEED, 23, 23, 23, 23, 0);
+//            strafeToPosition(59, .5);
+//            gyroTurn(TURN_SPEED, 5);
+//            golift(85, 1);
+//            strafeToPosition(32, .5);
+//            gyroDrive(DRIVE_SPEED, -9, -9, -9, -9, 0);
+//            sleep(10);
+//            letgogirl();
+//            gyroDrive(DRIVE_SPEED, 8, 8,8,8,0);
+//            strafeToPosition(-16.22, .2);
+//            golift(-60, .4);
+//            gyroDrive(.3, -60, -60, -60, -60,0);
+//            golift(-11,.3);
+//            getitgirl();
+//            golift(74, .8);
+//            gyroDrive(DRIVE_SPEED, 59, 59, 59, 59,0);
+//            strafeToPosition(17, .3);
+//            gyroDrive(.2, -6.5, -6.5, -6.5, -6.5, 0);
+//            sleep(100);
+//            letgogirl();
+//            gyroDrive(DRIVE_SPEED, 7, 7,7,7,0);
+//            strafeToPosition(-17, .3);
+//            gyroDrive(DRIVE_SPEED,-30,-30,-30,-30,0);
 
 
 
         } else if (detector.three == true) {
 
-            gyroDrive(DRIVE_SPEED, 23, 23, 23, 23, 0);
-            strafeToPosition(59, .5);
-            gyroTurn(TURN_SPEED, 5);
-            golift(85, 1);
-            strafeToPosition(32, .5);
-            gyroDrive(DRIVE_SPEED, -9, -9, -9, -9, 0);
-            sleep(10);
-            letgogirl();
-            gyroDrive(DRIVE_SPEED, 8, 8,8,8,0);
-            strafeToPosition(-16.22, .2);
-            golift(-60, .4);
-            gyroDrive(.3, -60, -60, -60, -60,0);
-            golift(-11,.3);
-            getitgirl();
-            golift(74, .8);
-            gyroDrive(DRIVE_SPEED, 59, 59, 59, 59,0);
-            strafeToPosition(17.5, .3);
-            gyroDrive(.2, -8.1, -8.1, -8.1, -8.1, 0);
-            sleep(100);
-            letgogirl();
-            gyroDrive(DRIVE_SPEED, 8, 8,8,8,0);
-            strafeToPosition(-15, .3);
-            gyroDrive(DRIVE_SPEED,-56,-56,-56,-56,0);
+//            gyroDrive(DRIVE_SPEED, 23, 23, 23, 23, 0);
+//            strafeToPosition(59, .5);
+//            gyroTurn(TURN_SPEED, 5);
+//            golift(85, 1);
+//            strafeToPosition(32, .5);
+//            gyroDrive(DRIVE_SPEED, -9, -9, -9, -9, 0);
+//            sleep(10);
+//            letgogirl();
+//            gyroDrive(DRIVE_SPEED, 8, 8,8,8,0);
+//            strafeToPosition(-16.22, .2);
+//            golift(-60, .4);
+//            gyroDrive(.3, -60, -60, -60, -60,0);
+//            golift(-11,.3);
+//            getitgirl();
+//            golift(74, .8);
+//            gyroDrive(DRIVE_SPEED, 59, 59, 59, 59,0);
+//            strafeToPosition(17, .3);
+//            gyroDrive(.2, -6.5, -6.5, -6.5, -6.5, 0);
+//            sleep(100);
+//            letgogirl();
+//            gyroDrive(DRIVE_SPEED, 8, 8,8,8,0);
+//            strafeToPosition(-15, .3);
+//            gyroDrive(DRIVE_SPEED,-56,-56,-56,-56,0);
 
 
 
@@ -259,6 +261,67 @@ public class AutoRight extends LinearOpMode {
         rightgrabber.setPower(0);
         leftgrabber.setPower(0);
     }
+
+    public void drivebackrightandfrontleft(double inches, double speed) {
+
+        //
+        int move = (int) (Math.round(inches * cpi * meccyBias));
+        //
+        backleft.setTargetPosition(backleft.getCurrentPosition() - move);
+        //frontleft.setTargetPosition(frontleft.getCurrentPosition() + move);
+        //backright.setTargetPosition(backright.getCurrentPosition() + move);
+        frontright.setTargetPosition(frontright.getCurrentPosition() - move);
+        //
+        //frontleft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        frontright.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        backleft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        //backright.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        //
+        //frontleft.setPower(speed);
+        backleft.setPower(speed);
+        frontright.setPower(speed);
+        //backright.setPower(speed);
+        //
+        while ( frontright.isBusy() && backleft.isBusy()) {
+        }
+        frontright.setPower(0);
+        //frontleft.setPower(0);
+        //backright.setPower(0);
+        backleft.setPower(0);
+        return;
+
+    }
+
+
+
+    public void drivebackleftandfrontright(double frontrightinches, double backleftiches, double speed) {
+
+        int frontrightmove = (int) (Math.round(frontrightinches * cpi * meccyBias));
+        int backleftmove = (int) (Math.round(backleftiches * cpi * meccyBias));
+
+        //
+
+        frontright.setTargetPosition(frontright.getCurrentPosition() + frontrightmove);
+        backleft.setTargetPosition(backleft.getCurrentPosition() + backleftmove);
+        //
+        frontright.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        backleft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        //
+        frontright.setPower(speed);
+        backleft.setPower(speed);
+        //
+        while (frontleft.isBusy() && frontright.isBusy() && backleft.isBusy() && backright.isBusy()) {
+        }
+        frontright.setPower(0);
+        frontleft.setPower(0);
+        backright.setPower(0);
+        backleft.setPower(0);
+        return;
+    }
+
+
+
+
 
 
 
@@ -376,14 +439,18 @@ public class AutoRight extends LinearOpMode {
     This function uses the encoders to strafe left or right.
     Negative input for inches results in left strafing.
      */
-    public void strafeToPosition(double inches, double speed) {
+    public void strafeToPosition(double backleftinches,double frontleftinches, double backrightiches, double frontrightiches,  double speed) {
         //
-        int move = (int) (Math.round(inches * cpi * meccyBias));
+        int backleftmove = (int) (Math.round(backleftinches * cpi * meccyBias));
+        int frontleftmove = (int) (Math.round(frontleftinches * cpi * meccyBias));
+        int backrightmove = (int) (Math.round(backrightiches * cpi * meccyBias));
+        int frontrightmove = (int) (Math.round(frontrightiches * cpi * meccyBias));
+
         //
-        backleft.setTargetPosition(backleft.getCurrentPosition() - move);
-        frontleft.setTargetPosition(frontleft.getCurrentPosition() + move);
-        backright.setTargetPosition(backright.getCurrentPosition() + move);
-        frontright.setTargetPosition(frontright.getCurrentPosition() - move);
+        backleft.setTargetPosition(backleft.getCurrentPosition() - backleftmove);
+        frontleft.setTargetPosition(frontleft.getCurrentPosition() + frontleftmove);
+        backright.setTargetPosition(backright.getCurrentPosition() + backrightmove);
+        frontright.setTargetPosition(frontright.getCurrentPosition() - frontrightmove);
         //
         frontleft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         frontright.setMode(DcMotor.RunMode.RUN_TO_POSITION);
