@@ -244,8 +244,8 @@ public class AutoRight extends LinearOpMode {
     public void letgogirl(){
         while(lift.isBusy()){
         }
-        rightgrabber.setPower(-1);
         leftgrabber.setPower(-1);
+        rightgrabber.setPower(1);
         sleep(600);
         rightgrabber.setPower(0);
         leftgrabber.setPower(0);
@@ -255,8 +255,8 @@ public class AutoRight extends LinearOpMode {
     public void getitgirl(){
         while(lift.isBusy()){
         }
-        rightgrabber.setPower(.7);
-        leftgrabber.setPower(.7);
+        leftgrabber.setPower(1);
+        rightgrabber.setPower(-1);
         sleep(1200);
         rightgrabber.setPower(0);
         leftgrabber.setPower(0);

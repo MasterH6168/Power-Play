@@ -165,7 +165,7 @@ public class AutoLeft extends LinearOpMode {
             sleep(100);
             letgogirl();
             gyroDrive(DRIVE_SPEED,5.5,5.5,5.5,5.5,-88);
-            gyroTurn(TURN_SPEED,-80);
+            gyroTurn(TURN_SPEED,-85);
             strafeToPosition(47,DRIVE_SPEED);
 
 
@@ -224,8 +224,8 @@ public class AutoLeft extends LinearOpMode {
             sleep(100);
             letgogirl();
             gyroDrive(DRIVE_SPEED,5.5,5.5,5.5,5.5,-88);
-            gyroTurn(TURN_SPEED,-80);
-            strafeToPosition(25,DRIVE_SPEED);
+            gyroTurn(TURN_SPEED,-85);
+            strafeToPosition(20,DRIVE_SPEED);
 
 
             //with strafing
@@ -360,8 +360,8 @@ public class AutoLeft extends LinearOpMode {
     public void letgogirl(){
         while(lift.isBusy()){
         }
-        rightgrabber.setPower(-1);
         leftgrabber.setPower(-1);
+        rightgrabber.setPower(1);
         sleep(700);
         rightgrabber.setPower(0);
         leftgrabber.setPower(0);
@@ -371,8 +371,8 @@ public class AutoLeft extends LinearOpMode {
     public void getitgirl(){
         while(lift.isBusy()){
         }
-        rightgrabber.setPower(.7);
         leftgrabber.setPower(.7);
+        rightgrabber.setPower(-.7);
         sleep(1200);
         rightgrabber.setPower(0);
         leftgrabber.setPower(0);

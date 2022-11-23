@@ -199,12 +199,12 @@ public class teleOP extends OpMode {
         //wormhole in
         if (gamepad2.b){
             leftgrabber.setPower(1);
-            rightgrabber.setPower(1);
+            rightgrabber.setPower(-1);
 
-
+        //wormhole out
         }else if (gamepad2.x){
             leftgrabber.setPower(-1);
-            rightgrabber.setPower(-1);
+            rightgrabber.setPower(1);
 
         }else {
             leftgrabber.setPower(0);
