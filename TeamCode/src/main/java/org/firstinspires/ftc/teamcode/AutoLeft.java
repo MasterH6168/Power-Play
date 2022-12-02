@@ -44,7 +44,7 @@ public class AutoLeft extends LinearOpMode {
     static final double P_TURN_COEFF = 0.1;     // Larger is more responsive, but also less stable
     static final double P_DRIVE_COEFF = 0.07;     // Larger is more responsive, but also less stable
 
-    double DRIVE_SPEED = 0.4;
+    double DRIVE_SPEED = 0.45;
     double TURN_SPEED = 0.4;
 
     Double conversion = cpi * bias;
@@ -143,13 +143,40 @@ public class AutoLeft extends LinearOpMode {
         if (detector.one == true) {
 
             //no strafing
+//            gyroDrive(DRIVE_SPEED,6 ,6,6,6,0);
+//            drivebackrightandfrontleft(-30,.4);
+//            gyroTurn(TURN_SPEED, -88);
+//            gyroDrive(DRIVE_SPEED,-47,-47,-47,-47,-88);
+//            golift(86,.7);
+//            gyroTurn(TURN_SPEED, -46);
+//            gyroDrive(DRIVE_SPEED,-12,-12,-12,-12,-46);
+//            sleep(10);
+//            letgogirl();
+//            gyroDrive(DRIVE_SPEED,11.9,11.9,11.9,11.9,-47);
+//            gyroTurn(TURN_SPEED,1);
+//            golift(-60, .4);
+//            gyroDrive(.3, -60, -60, -60, -60,1);
+//            golift(-12,.3);
+//            getitgirl();
+//            golift(74, .8);
+//            gyroDrive(DRIVE_SPEED, 43, 43, 43, 43,0);
+//            gyroTurn(TURN_SPEED, -88);
+//            gyroDrive(DRIVE_SPEED,-5.5,-5.5,-5.5,-5.5,-88);
+//            sleep(100);
+//            letgogirl();
+//            gyroDrive(DRIVE_SPEED,5.5,5.5,5.5,5.5,-88);
+//            gyroTurn(TURN_SPEED,-85);
+//            gyroDrive(DRIVE_SPEED,6,6,6,6,88);
+//            golift(-60,.5);
+//            gyroTurn(.4,-4);
+//            gyroDrive(.4,-40,-40,-40,-40,-4);
             gyroDrive(DRIVE_SPEED,6 ,6,6,6,0);
             drivebackrightandfrontleft(-30,.4);
             gyroTurn(TURN_SPEED, -88);
             gyroDrive(DRIVE_SPEED,-47,-47,-47,-47,-88);
             golift(86,.7);
             gyroTurn(TURN_SPEED, -46);
-            gyroDrive(DRIVE_SPEED,-13.5,-13.5,-13.5,-13.5,-46);
+            gyroDrive(DRIVE_SPEED,-12,-12,-12,-12,-46);
             sleep(10);
             letgogirl();
             gyroDrive(DRIVE_SPEED,12,12,12,12,-47);
@@ -166,9 +193,7 @@ public class AutoLeft extends LinearOpMode {
             letgogirl();
             gyroDrive(DRIVE_SPEED,5.5,5.5,5.5,5.5,-88);
             gyroTurn(TURN_SPEED,-85);
-            strafeToPosition(47,DRIVE_SPEED);
-
-
+            gyroDrive(.4,-40,-40,-40,-40,-4);
 
 //  with strafing
 //            gyroDrive(DRIVE_SPEED, 23, 23, 23, 23, 0);
@@ -208,7 +233,7 @@ public class AutoLeft extends LinearOpMode {
             gyroDrive(DRIVE_SPEED,-47,-47,-47,-47,-88);
             golift(86,.7);
             gyroTurn(TURN_SPEED, -46);
-            gyroDrive(DRIVE_SPEED,-13.5,-13.5,-13.5,-13.5,-46);
+            gyroDrive(DRIVE_SPEED,-12,-12,-12,-12,-46);
             sleep(10);
             letgogirl();
             gyroDrive(DRIVE_SPEED,12,12,12,12,-47);
@@ -266,10 +291,10 @@ public class AutoLeft extends LinearOpMode {
             gyroDrive(DRIVE_SPEED,-47,-47,-47,-47,-88);
             golift(86,.7);
             gyroTurn(TURN_SPEED, -46);
-            gyroDrive(DRIVE_SPEED,-13.5,-13.5,-13.5,-13.5,-46);
+            gyroDrive(DRIVE_SPEED,-12,-12,-12,-12,-46);
             sleep(10);
             letgogirl();
-            gyroDrive(DRIVE_SPEED,12,12,12,12,-47);
+            gyroDrive(DRIVE_SPEED,11.4,11.4,11.4,11.4,-47);
             gyroTurn(TURN_SPEED,1);
             golift(-60, .4);
             gyroDrive(.3, -60, -60, -60, -60,1);
@@ -283,7 +308,9 @@ public class AutoLeft extends LinearOpMode {
             letgogirl();
             gyroDrive(DRIVE_SPEED,5.5,5.5,5.5,5.5,-88);
             gyroTurn(TURN_SPEED,-80);
+            golift(-60,.5);
             strafeToPosition(-15,DRIVE_SPEED);
+            gyroTurn(.45,-270);
 
 
             //with strafing
@@ -362,7 +389,7 @@ public class AutoLeft extends LinearOpMode {
         }
         leftgrabber.setPower(-1);
         rightgrabber.setPower(1);
-        sleep(700);
+        sleep(800);
         rightgrabber.setPower(0);
         leftgrabber.setPower(0);
     }
