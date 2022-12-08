@@ -97,13 +97,13 @@ public class RightVision {
 //            opMode.telemetry.addData("BLUE: ", blue_avg);
 //            opMode.telemetry.update();
 
-            if(red_avg >= 120){
+            if(red_avg >= 100){
                 one = true;
                 two = false;
                 three = false;
             }
 
-            else if(blue_avg >= 120){
+            else if(blue_avg >= 100){
                 one = false;
                 two = false;
                 three = true;

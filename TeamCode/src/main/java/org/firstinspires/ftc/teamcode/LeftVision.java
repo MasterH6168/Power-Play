@@ -96,13 +96,13 @@ public class LeftVision {
 //            opMode.telemetry.addData("BLUE: ", blue_avg);
 //            opMode.telemetry.update();
 
-            if(red_avg >= 110){
+            if(red_avg >= 95){
                 one = true;
                 two = false;
                 three = false;
             }
 
-            else if(blue_avg >= 110){
+            else if(blue_avg >= 90){
                 one = false;
                 two = false;
                 three = true;
