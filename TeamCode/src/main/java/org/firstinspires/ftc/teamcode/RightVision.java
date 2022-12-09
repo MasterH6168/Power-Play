@@ -108,7 +108,7 @@ public class RightVision {
                 two = false;
                 three = true;
             }
-
+////dddd
             //opMode.telemetry.addData("boxRight: ", right_avg);
             //opMode.telemetry.update();
 //            else if(right_avg <= left_avg && right_avg <= center_avg){
