@@ -205,7 +205,7 @@ public class teleOP extends OpMode {
                 rightgrabber.setPower(0);
 
             }
-// jkl;jkl
+
 
         }
     }
