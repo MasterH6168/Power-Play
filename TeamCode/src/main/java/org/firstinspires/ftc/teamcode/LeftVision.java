@@ -20,8 +20,8 @@ public class LeftVision {
 
     AddBoxesPipeline pipeline;
 
-    private final Point centerBox_topLeft    = new Point(61,60);
-    private final Point centerBox_bottomRight    = new Point(106, 130);
+    private final Point centerBox_topLeft    = new Point(121,75);
+    private final Point centerBox_bottomRight    = new Point(166, 140);
 
 //    private final Point centerBox_topLeft    = new Point(230,30);
 //    private final Point centerBox_bottomRight    = new Point(190, 100);
