@@ -154,9 +154,9 @@ public class AutoRight extends LinearOpMode {
             sleep(400);
             letgogirl();
             gyroDrive(DRIVE_SPEED,10,10,10,10,47);
-            gyroTurn(.4,-1);
+            gyroTurn(.4,4);
             golift(-60, .4);
-            gyroDrive(.3, -57, -57, -57, -57,1);
+            gyroDrive(.3, -57, -57, -57, -57,4);
             golift(-12,.3);
             getitgirl();
             golift(74, .8);
@@ -214,9 +214,9 @@ public class AutoRight extends LinearOpMode {
             sleep(400);
             letgogirl();
             gyroDrive(DRIVE_SPEED,10,10,10,10,47);
-            gyroTurn(.4,-1);
+            gyroTurn(.4,4);
             golift(-60, .4);
-            gyroDrive(.3, -57, -57, -57, -57,1);
+            gyroDrive(.3, -57, -57, -57, -57,4);
             golift(-12,.3);
             getitgirl();
             golift(74, .8);

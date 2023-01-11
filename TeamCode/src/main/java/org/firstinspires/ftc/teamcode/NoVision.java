@@ -1,18 +1,30 @@
 package org.firstinspires.ftc.teamcode;
 
+import android.app.Activity;
+import android.graphics.Color;
+import android.view.View;
+
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
+import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
+import com.qualcomm.robotcore.hardware.NormalizedRGBA;
+import com.qualcomm.robotcore.hardware.SwitchableLight;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 
+import org.firstinspires.ftc.robotcontroller.external.samples.SensorColor;
 import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 @Autonomous(name="NoVision")
@@ -26,6 +38,7 @@ public class NoVision extends LinearOpMode {
     DcMotor rightgrabber;
     DcMotor leftgrabber;
 
+    ColorSensor color;
 
     ModernRoboticsI2cGyro gyro;
 
@@ -44,9 +57,8 @@ public class NoVision extends LinearOpMode {
     static final double P_TURN_COEFF = 0.1;     // Larger is more responsive, but also less stable
     static final double P_DRIVE_COEFF = 0.07;     // Larger is more responsive, but also less stable
 
-    double DRIVE_SPEED = 0.4;
+    double DRIVE_SPEED = 0.7;
     double TURN_SPEED = 0.4;
-    double DRIVE_ANGLE = 0;
 
     Double conversion = cpi * bias;
     Boolean exit = false;
@@ -67,6 +79,7 @@ public class NoVision extends LinearOpMode {
         leftgrabber = hardwareMap.get(DcMotor.class, "leftgrabber");
         rightgrabber = hardwareMap.get(DcMotor.class, "rightgrabber");
         gyro = hardwareMap.get(ModernRoboticsI2cGyro.class, "Gyro");
+        color = hardwareMap.get(ColorSensor.class, "sensor_color");
 
 
 
@@ -115,7 +128,7 @@ public class NoVision extends LinearOpMode {
         leftgrabber.setPower(0);
         rightgrabber.setPower(0);
 
-        RightVision detector = new RightVision(this);
+        LeftVision detector = new LeftVision(this);
 
 
         telemetry.addLine("Start Gyro");
@@ -129,48 +142,43 @@ public class NoVision extends LinearOpMode {
 
         waitForStart();
 
-        telemetry.addData("Red", detector.one);
-        telemetry.addData("Green", detector.two);
-        telemetry.addData("Blue", detector.red);
 
         //neg strafe = left strafing
-
         //high =
         //mid =
         //low =
 
-        gyroDrive(DRIVE_SPEED,-30,-30,-30,-30,0);
-    }
-
-    public void golift(double inches, double speed){
-        int move =  -(int)(Math.round(inches*conversion));
-
-        lift.setTargetPosition(lift.getCurrentPosition() + move);
-        lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        lift.setPower(speed);
-    }
 
 
-    public void letgogirl(){
-        while(lift.isBusy()){
+            telemetry.addData("Red Value", color.red());
+            telemetry.addData("Green Value", color.green());
+            telemetry.addData("Blue Value", color.blue());
+
+
+            telemetry.update();
+
+
+        while (color.red() <= 200) {
+            backright.setPower(-.08);
+            backleft.setPower(.08);
+            frontright.setPower(.08);
+            frontleft.setPower(-.08);
         }
-        leftgrabber.setPower(-1);
-        rightgrabber.setPower(1);
-        sleep(800);
-        rightgrabber.setPower(0);
-        leftgrabber.setPower(0);
+
+
+
+//            while (color.red() >= 200) {
+//                backright.setPower(0);
+//                backleft.setPower(0);
+//                frontright.setPower(0);
+//                frontleft.setPower(0);
+//            }
+
+
     }
 
 
-    public void getitgirl(){
-        while(lift.isBusy()){
-        }
-        leftgrabber.setPower(.7);
-        rightgrabber.setPower(-.7);
-        sleep(1200);
-        rightgrabber.setPower(0);
-        leftgrabber.setPower(0);
-    }
+
 
     public void drivebackrightandfrontleft(double inches, double speed) {
 
@@ -202,41 +210,35 @@ public class NoVision extends LinearOpMode {
 
     }
 
+    public void golift(double inches, double speed){
+        int move =  -(int)(Math.round(inches*conversion));
 
-
-    public void drivebackleftandfrontright(double inches, double speed) {
-
-        //
-        int move = (int) (Math.round(inches * cpi * meccyBias));
-        //
-        // backleft.setTargetPosition(backleft.getCurrentPosition() - move);
-        frontleft.setTargetPosition(frontleft.getCurrentPosition() + move);
-        backright.setTargetPosition(backright.getCurrentPosition() + move);
-        //frontright.setTargetPosition(frontright.getCurrentPosition() - move);
-        //
-        frontleft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        //  frontright.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        //  backleft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        backright.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        //
-        frontleft.setPower(speed);
-        // backleft.setPower(speed);
-        // frontright.setPower(speed);
-        backright.setPower(speed);
-        //
-        while ( frontleft.isBusy() && backright.isBusy()) {
-        }
-        //frontright.setPower(0);
-        frontleft.setPower(0);
-        backright.setPower(0);
-        //backleft.setPower(0);
-        return;
-
+        lift.setTargetPosition(lift.getCurrentPosition() + move);
+        lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        lift.setPower(speed);
     }
 
 
+    public void letgogirl(){
+        while(lift.isBusy()){
+        }
+        leftgrabber.setPower(-1);
+        rightgrabber.setPower(1);
+        sleep(800);
+        rightgrabber.setPower(0);
+        leftgrabber.setPower(0);
+    }
 
 
+    public void getitgirl(){
+        while(lift.isBusy()){
+        }
+        leftgrabber.setPower(.7);
+        rightgrabber.setPower(-.7);
+        sleep(1200);
+        rightgrabber.setPower(0);
+        leftgrabber.setPower(0);
+    }
 
 
 
@@ -380,14 +382,6 @@ public class NoVision extends LinearOpMode {
         backright.setPower(0);
         backleft.setPower(0);
         return;
-        //
-//        while (frontleft.isBusy() && frontright.isBusy() && backleft.isBusy() && backright.isBusy()) {
-//        }
-//        frontright.setPower(0);
-//        frontleft.setPower(0);
-//        backright.setPower(0);
-//        backleft.setPower(0);
-//        return;
     }
 
     //
