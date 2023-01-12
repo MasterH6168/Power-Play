@@ -143,16 +143,16 @@ public class AutoLeft extends LinearOpMode {
         if (detector.one == true) {
 
             //no strafing
-            gyroDrive(DRIVE_SPEED,6 ,6,6,6,0);
+            gyroDrive(DRIVE_SPEED,12 ,12,12,12,0);
             drivebackrightandfrontleft(-30,.4);
             gyroTurn(TURN_SPEED, -88);
             gyroDrive(DRIVE_SPEED,-47,-47,-47,-47,-88);
             golift(86,.7);
             gyroTurn(TURN_SPEED, -46);
-            gyroDrive(DRIVE_SPEED,-14,-14,-14,-14,-46);
+            gyroDrive(DRIVE_SPEED,-16,-16,-16,-16,-46);
             sleep(100);
             letgogirl();
-            gyroDrive(DRIVE_SPEED,12,12,12,12,-47);
+            gyroDrive(DRIVE_SPEED,14,14,14,14,-47);
             gyroTurn(TURN_SPEED,0);
             golift(-60, .4);
             gyroDrive(.3, -60, -60, -60, -60,0);
@@ -166,7 +166,7 @@ public class AutoLeft extends LinearOpMode {
             letgogirl();
             gyroDrive(DRIVE_SPEED,6.2,6.2,6.2,6.2,-88);
             gyroTurn(.3,0);
-            gyroDrive(.4,-40,-40,-40,-40,0);
+            gyroDrive(.5,-40,-40,-40,-40,0);
 
 
 
@@ -202,16 +202,16 @@ public class AutoLeft extends LinearOpMode {
         } else if (detector.two == true) {
 
             //no strafing
-            gyroDrive(DRIVE_SPEED,6 ,6,6,6,0);
+            gyroDrive(DRIVE_SPEED,12 ,12,12,12,0);
             drivebackrightandfrontleft(-30,.4);
             gyroTurn(TURN_SPEED, -88);
             gyroDrive(DRIVE_SPEED,-47,-47,-47,-47,-88);
             golift(86,.7);
             gyroTurn(TURN_SPEED, -46);
-            gyroDrive(DRIVE_SPEED,-13.5,-13.5,-13.5,-13.5,-46);
+            gyroDrive(DRIVE_SPEED,-16,-16,-16,-16,-46);
             sleep(100);
             letgogirl();
-            gyroDrive(DRIVE_SPEED,12,12,12,12,-44);
+            gyroDrive(DRIVE_SPEED,14,14,14,14,-47);
             gyroTurn(TURN_SPEED,0);
             golift(-60, .4);
             gyroDrive(.3, -60, -60, -60, -60,0);
@@ -220,10 +220,10 @@ public class AutoLeft extends LinearOpMode {
             golift(74, .8);
             gyroDrive(DRIVE_SPEED, 43, 43, 43, 43,0);
             gyroTurn(TURN_SPEED, -88);
-            gyroDrive(.3,-5.5,-5.5,-5.5,-5.5,-88);
-            sleep(700);
+            gyroDrive(.35,-5.5,-5.5,-5.5,-5.5,-88);
+            sleep(500);
             letgogirl();
-            gyroDrive(DRIVE_SPEED,6,6,6,6,-88);
+            gyroDrive(DRIVE_SPEED,6.2,6.2,6.2,6.2,-88);
  //           gyroTurn(TURN_SPEED,-85);
             strafeToPosition(20,DRIVE_SPEED);
 
@@ -260,28 +260,28 @@ public class AutoLeft extends LinearOpMode {
         } else if (detector.three == true) {
 
             //no strafing
-            gyroDrive(DRIVE_SPEED,6 ,6,6,6,0);
+            gyroDrive(DRIVE_SPEED,12 ,12,12,12,0);
             drivebackrightandfrontleft(-30,.4);
             gyroTurn(TURN_SPEED, -88);
             gyroDrive(DRIVE_SPEED,-47,-47,-47,-47,-88);
             golift(86,.7);
             gyroTurn(TURN_SPEED, -46);
-            gyroDrive(DRIVE_SPEED,-13.5,-13.5,-13.5,-13.5,-46);
+            gyroDrive(DRIVE_SPEED,-16,-16,-16,-16,-46);
             sleep(100);
             letgogirl();
-            gyroDrive(DRIVE_SPEED,11.5,11.5,11.5,11.5,-47);
+            gyroDrive(DRIVE_SPEED,14,14,14,14,-47);
             gyroTurn(TURN_SPEED,0);
             golift(-60, .4);
-            gyroDrive(.3, -58, -58, -58, -58,0);
+            gyroDrive(.3, -60, -60, -60, -60,0);
             golift(-12,.3);
             getitgirl();
             golift(74, .8);
             gyroDrive(DRIVE_SPEED, 43, 43, 43, 43,0);
             gyroTurn(TURN_SPEED, -88);
-            gyroDrive(.3,-5.5,-5.5,-5.5,-5.5,-88);
-            sleep(700);
+            gyroDrive(.35,-5.5,-5.5,-5.5,-5.5,-88);
+            sleep(500);
             letgogirl();
-            gyroDrive(DRIVE_SPEED,5.5,5.5,5.5,5.5,-88);
+            gyroDrive(DRIVE_SPEED,6.2,6.2,6.2,6.2,-88);
        //     gyroTurn(TURN_SPEED,-85);
             strafeToPosition(-20,DRIVE_SPEED);
 

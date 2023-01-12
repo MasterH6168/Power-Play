@@ -191,19 +191,23 @@ public class RedLeftCircuit extends LinearOpMode {
             gyroTurn(TURN_SPEED,0);
             gyroDrive(DRIVE_SPEED09, -40, -40, -40, -40,0);
             gyroDrive(DRIVE_SPEED05, -8, -8, -8, -8,0);
-            golift(-13,.3);
+            golift(-15,.3);
             getitgirl();
             golift(22,.6);
             gyroDrive(DRIVE_SPEED08, 10, 10, 10, 10,0);
-            gyroTurn(TURN_SPEED,120);
-            gyroDrive(DRIVE_SPEED05, -8, -8, -8, -8,120);
+            gyroTurn(TURN_SPEED,117);
+            gyroDrive(DRIVE_SPEED05, -8, -8, -8, -8,117);
             letgogirl();
-            gyroDrive(DRIVE_SPEED05, 7, 7, 7, 7,120);
+            gyroDrive(DRIVE_SPEED05, 8, 8, 8, 8,117);
             gyroTurn(TURN_SPEED,0);
-            golift(-7,.4);
+            golift(-25,.4);
             gyroDrive(DRIVE_SPEED08, -12, -12, -12, -12,0);
             getitgirl();
-
+            golift(22,.6);
+            gyroDrive(DRIVE_SPEED08, 10, 10, 10, 10,0);
+            gyroTurn(TURN_SPEED,117);
+            gyroDrive(DRIVE_SPEED08,-8.5,-8.5,-8.5,-8.5,117);
+            gyroDrive(DRIVE_SPEED08,8.5,8.5,8.5,8.5,117);
 
 
 
