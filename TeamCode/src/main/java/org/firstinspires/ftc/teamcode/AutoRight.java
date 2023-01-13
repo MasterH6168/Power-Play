@@ -148,12 +148,12 @@ public class AutoRight extends LinearOpMode {
             drivebackleftandfrontright(30,.4);
             gyroTurn(.6, 88);
             gyroDrive(DRIVE_SPEED,-46,-46,-46,-46,88);
-            golift(86,.7);
+            golift(86,.9);
             gyroTurn(.4, 46);
             gyroDrive(DRIVE_SPEED,-16,-16,-16,-16,46);
             sleep(200);
             letgogirl();
-            gyroDrive(DRIVE_SPEED,14,14,14,14,47);
+            gyroDrive(DRIVE_SPEED,12,12,12,12,47);
             gyroTurn(.4,0);
             golift(-60, .4);
             gyroDrive(.3, -60, -60, -60, -60,0);
@@ -207,12 +207,12 @@ public class AutoRight extends LinearOpMode {
             drivebackleftandfrontright(30,.4);
             gyroTurn(.6, 88);
             gyroDrive(DRIVE_SPEED,-46,-46,-46,-46,88);
-            golift(86,.7);
+            golift(86,.9);
             gyroTurn(.4, 46);
             gyroDrive(DRIVE_SPEED,-16,-16,-16,-16,46);
             sleep(200);
             letgogirl();
-            gyroDrive(DRIVE_SPEED,14,14,14,14,47);
+            gyroDrive(DRIVE_SPEED,12,12,12,12,47);
             gyroTurn(.4,0);
             golift(-60, .4);
             gyroDrive(.3, -60, -60, -60, -60,0);
@@ -263,12 +263,12 @@ public class AutoRight extends LinearOpMode {
             drivebackleftandfrontright(30,.4);
             gyroTurn(.6, 88);
             gyroDrive(DRIVE_SPEED,-46,-46,-46,-46,88);
-            golift(86,.7);
+            golift(86,.9);
             gyroTurn(.4, 46);
             gyroDrive(DRIVE_SPEED,-16,-16,-16,-16,46);
             sleep(200);
             letgogirl();
-            gyroDrive(DRIVE_SPEED,14,14,14,14,47);
+            gyroDrive(DRIVE_SPEED,12,12,12,12,47);
             gyroTurn(.4,0);
             golift(-60, .4);
             gyroDrive(.3, -60, -60, -60, -60,0);
@@ -282,7 +282,7 @@ public class AutoRight extends LinearOpMode {
             letgogirl();
             gyroDrive(DRIVE_SPEED,6.2,6.2,6.2,6.2,-88);
             //     gyroTurn(TURN_SPEED,-85);
-            strafeToPosition(-60,DRIVE_SPEED);
+            strafeToPosition(-50,DRIVE_SPEED);
 
 
 

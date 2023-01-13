@@ -20,8 +20,8 @@ public class RightVision {
 
     AddBoxesPipeline pipeline;
 
-    private final Point centerBox_topLeft    = new Point(122,20);
-    private final Point centerBox_bottomRight    = new Point(82, 90);
+    private final Point centerBox_topLeft    = new Point(102,20);
+    private final Point centerBox_bottomRight    = new Point(62, 90);
 
 //    private final Point leftBox_topLeft    = new Point(0,60);
 //    private final Point leftBox_bottomRight    = new Point(30, 110);
@@ -97,13 +97,13 @@ public class RightVision {
 //            opMode.telemetry.addData("BLUE: ", blue_avg);
 //            opMode.telemetry.update();
 
-            if(red_avg >= 100){
+            if(red_avg >= 105){
                 one = true;
                 two = false;
                 three = false;
             }
 
-            else if(blue_avg >= 100){
+            else if(blue_avg >= 105){
                 one = false;
                 two = false;
                 three = true;

@@ -20,8 +20,8 @@ public class LeftVision {
 
     AddBoxesPipeline pipeline;
 
-    private final Point centerBox_topLeft    = new Point(171,75);
-    private final Point centerBox_bottomRight    = new Point(216, 140);
+    private final Point centerBox_topLeft    = new Point(180,75);
+    private final Point centerBox_bottomRight    = new Point(225, 140);
 
 //    private final Point centerBox_topLeft    = new Point(230,30);
 //    private final Point centerBox_bottomRight    = new Point(190, 100);
@@ -91,18 +91,18 @@ public class LeftVision {
             green_avg = (int) Core.mean(region_center_green).val[0];
             blue_avg = (int) Core.mean(region_center_blue).val[0];
 
-//            opMode.telemetry.addData("RED: ", red_avg);
-//            opMode.telemetry.addData("GREEN: ", green_avg);
-//            opMode.telemetry.addData("BLUE: ", blue_avg);
-//            opMode.telemetry.update();
+            opMode.telemetry.addData("RED: ", red_avg);
+            opMode.telemetry.addData("GREEN: ", green_avg);
+            opMode.telemetry.addData("BLUE: ", blue_avg);
+            opMode.telemetry.update();
 
-            if(red_avg >= 95){
+            if(red_avg >= 110){
                 one = true;
                 two = false;
                 three = false;
             }
 
-            else if(blue_avg >= 90){
+            else if(blue_avg >= 110){
                 one = false;
                 two = false;
                 three = true;
