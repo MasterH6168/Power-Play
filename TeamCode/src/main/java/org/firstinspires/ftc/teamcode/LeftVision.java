@@ -91,18 +91,18 @@ public class LeftVision {
             green_avg = (int) Core.mean(region_center_green).val[0];
             blue_avg = (int) Core.mean(region_center_blue).val[0];
 
-            opMode.telemetry.addData("RED: ", red_avg);
-            opMode.telemetry.addData("GREEN: ", green_avg);
-            opMode.telemetry.addData("BLUE: ", blue_avg);
-            opMode.telemetry.update();
+//            opMode.telemetry.addData("RED: ", red_avg);
+//            opMode.telemetry.addData("GREEN: ", green_avg);
+//            opMode.telemetry.addData("BLUE: ", blue_avg);
+//            opMode.telemetry.update();
 
-            if(red_avg >= 110){
+            if(red_avg >= 90){
                 one = true;
                 two = false;
                 three = false;
             }
 
-            else if(blue_avg >= 110){
+            else if(blue_avg >= 90){
                 one = false;
                 two = false;
                 three = true;

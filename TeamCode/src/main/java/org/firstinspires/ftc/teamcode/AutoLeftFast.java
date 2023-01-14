@@ -5,6 +5,7 @@ import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
@@ -26,6 +27,7 @@ public class AutoLeftFast extends LinearOpMode {
     DcMotor rightgrabber;
     DcMotor leftgrabber;
 
+    ColorSensor color;
 
     ModernRoboticsI2cGyro gyro;
 
@@ -44,8 +46,11 @@ public class AutoLeftFast extends LinearOpMode {
     static final double P_TURN_COEFF = 0.1;     // Larger is more responsive, but also less stable
     static final double P_DRIVE_COEFF = 0.07;     // Larger is more responsive, but also less stable
 
-    double DRIVE_SPEED = 0.7;
-    double TURN_SPEED = 0.4;
+    double DRIVE_SPEED08 = 0.8;
+    double DRIVE_SPEED07 = 0.7;
+    double DRIVE_SPEED05 = 0.5;
+
+    double TURN_SPEED = 0.6;
 
     Double conversion = cpi * bias;
     Boolean exit = false;
@@ -66,6 +71,7 @@ public class AutoLeftFast extends LinearOpMode {
         leftgrabber = hardwareMap.get(DcMotor.class, "leftgrabber");
         rightgrabber = hardwareMap.get(DcMotor.class, "rightgrabber");
         gyro = hardwareMap.get(ModernRoboticsI2cGyro.class, "Gyro");
+        color = hardwareMap.get(ColorSensor.class, "sensor_color");
 
 
 
@@ -142,216 +148,79 @@ public class AutoLeftFast extends LinearOpMode {
 
         if (detector.one == true) {
 
-            //no strafing
-            gyroDrive(DRIVE_SPEED,7.5 ,7.5,7.5,7.5,0);
-            drivebackrightandfrontleft(-32,DRIVE_SPEED);
-            gyroTurn(.6, -83);
-            gyroDrive(DRIVE_SPEED,-23,-23,-23,-23,-83);
-            golift(86,.9);
-            gyroDrive(DRIVE_SPEED,-24,-24,-24,-24,-83);
-            gyroTurn(.6, -50);
-            gyroDrive(.4,-13,-13,-13,-13,-50);
-            sleep(150);
-            //drop cone at high 1
-            letgogirl();
-            gyroDrive(DRIVE_SPEED,12,12,12,12,-50);
-            gyroTurn(.6,0);
-            golift(-60, .5);
-            gyroDrive(.7, -50, -50, -50, -50,0);
-            gyroDrive(.4, -8, -8, -8, -8,0);
-            golift(-12,.3);
-            getitgirl();
-            golift(74, .8);
-            gyroDrive(DRIVE_SPEED, 40.5, 40.5, 40.5, 40.5,0);
-            gyroTurn(.6, -81);
-            gyroDrive(DRIVE_SPEED,-6,-6,-6,-6,-81);
-            sleep(300);
-            //drop cone at high 2
-            letgogirl();
-            gyroDrive(DRIVE_SPEED,5,5,5,5,-81);
-            golift(-60,.5);
-            gyroTurn(.6,-1);
-            gyroDrive(.7, -40, -40, -40, -40,1);
-            gyroDrive(.4, -8, -8, -8, -8,1);
-            golift(-15,.3);
-            getitgirl();
-//            golift(35, .8);
-//            gyroDrive(DRIVE_SPEED, 27, 27, 27, 27,0);
-//            gyroTurn(.6,70);
-//            gyroDrive(DRIVE_SPEED, -38, -38, -38, -38,70);
-//            golift(-15,.3);
-//            //drop cone at low
-//            letgogirl();
-//            golift(20,.5);
-//            gyroDrive(.9,20,20,20,20,62);
 
 
-
-//  with strafing
-//            gyroDrive(DRIVE_SPEED, 23, 23, 23, 23, 0);
-//            strafeToPosition(-59, .5);
-//            gyroTurn(TURN_SPEED, 0);
-//            golift(85, 1);
-//            strafeToPosition(-31, .4);
-//            gyroDrive(DRIVE_SPEED, -8, -8, -8, -8, 0);
-//            sleep(100);
-//            letgogirl();
-//            gyroDrive(DRIVE_SPEED, 5, 5,5,5,0);
-//            strafeToPosition(22, .2);
-//            golift(-60, .4);
-//            gyroDrive(.3, -60, -60, -60, -60,0);
-//            golift(-11,.3);
-//            getitgirl();
-//            golift(74, .8);
-//            gyroDrive(DRIVE_SPEED, 56, 56, 56, 56,0);
-//            gyroTurn(.2,0);
-//            strafeToPosition(-21, .3);
-//            gyroTurn(.2,0);
-//            gyroDrive(.2, -3.7, -3.7, -3.7, -3.7, 0);
-//            sleep(100);
-//            letgogirl();
-//            gyroDrive(DRIVE_SPEED, 5, 5,5,5,0);
-//            strafeToPosition(23, .3);
-//            gyroDrive(DRIVE_SPEED,-54,-54,-54,-54,0);
 
 
 
         } else if (detector.two == true) {
 
-            //no strafing
-           gyroDrive(DRIVE_SPEED,8 ,8,8,8,0);
-            drivebackrightandfrontleft(-32,DRIVE_SPEED);
-            gyroTurn(.6, -83);
-            gyroDrive(DRIVE_SPEED,-23,-23,-23,-23,-83);
-            golift(86,.9);
-            gyroDrive(DRIVE_SPEED,-24,-24,-24,-24,-83);
-            gyroTurn(.6, -50);
-            gyroDrive(.4,-13,-13,-13,-13,-50);
-            sleep(150);
-            //drop cone at high 1
-            letgogirl();
-            gyroDrive(DRIVE_SPEED,14,14,14,14,-50);
-            gyroTurn(.6,0);
-            golift(-60, .5);
-            gyroDrive(.7, -50, -50, -50, -50,0);
-            gyroDrive(.4, -8, -8, -8, -8,0);
-            golift(-12,.3);
-            getitgirl();
-            golift(74, .8);
-            gyroDrive(DRIVE_SPEED, 39, 39, 39, 39,0);
-            gyroTurn(.6, -81);
-            gyroDrive(DRIVE_SPEED,-6,-6,-6,-6,-81);
-            sleep(300);
-            //drop cone at high 2
-            letgogirl();
-            gyroDrive(DRIVE_SPEED,5,5,5,5,-81);
-            golift(-60,.5);
-            gyroTurn(.6,-1);
-            gyroDrive(.7, -40, -40, -40, -40,1);
-            gyroDrive(.4, -8, -8, -8, -8,1);
-            golift(-15,.3);
-            getitgirl();
-            golift(35, .8);
-            gyroDrive(DRIVE_SPEED, 27, 27, 27, 27,0);
-
-            //with strafing
-//            gyroDrive(DRIVE_SPEED, 23, 23, 23, 23, 0);
-//            strafeToPosition(-59, .5);
-//            gyroTurn(TURN_SPEED, 0);
-//            golift(85, 1);
-//            strafeToPosition(-31, .4);
-//            gyroDrive(DRIVE_SPEED, -8, -8, -8, -8, 0);
-//            sleep(100);
-//            letgogirl();
-//            gyroDrive(DRIVE_SPEED, 5, 5,5,5,0);
-//            strafeToPosition(22, .2);
-//            golift(-60, .4);
-//            gyroDrive(.3, -60, -60, -60, -60,0);
-//            golift(-11,.3);
-//            getitgirl();
-//            golift(74, .8);
-//            gyroDrive(DRIVE_SPEED, 56, 56, 56, 56,0);
-//            gyroTurn(.2,0);
-//            strafeToPosition(-21, .3);
-//            gyroTurn(.2,0);
-//            gyroDrive(.2, -3.7, -3.7, -3.7, -3.7, 0);
-//            sleep(100);
-//            letgogirl();
-//            gyroDrive(DRIVE_SPEED, 5, 5,5,5,0);
-//            strafeToPosition(21, .3);
-//            gyroDrive(DRIVE_SPEED,-27,-27,-27,-27,0);
-
-
 
         } else if (detector.three == true) {
 
-            //no strafing
-            gyroDrive(DRIVE_SPEED,8 ,8,8,8,0);
-            drivebackrightandfrontleft(-32,DRIVE_SPEED);
-            gyroTurn(.6, -83);
-            gyroDrive(DRIVE_SPEED,-23,-23,-23,-23,-83);
+            gyroDrive(DRIVE_SPEED07,12 ,12,12,12,0);
+            drivebackrightandfrontleft(-32,DRIVE_SPEED07);
+            gyroTurn(TURN_SPEED, -88);
+            gyroDrive(DRIVE_SPEED07,-23,-23,-23,-23,-88);
             golift(86,.9);
-            gyroDrive(DRIVE_SPEED,-24,-24,-24,-24,-83);
-            gyroTurn(.6, -50);
-            gyroDrive(.4,-13,-13,-13,-13,-50);
-            sleep(150);
+            gyroDrive(DRIVE_SPEED07,-24,-24,-24,-24,-88);
+            gyroTurn(TURN_SPEED, -35);
+            gyroDrive(DRIVE_SPEED07,-12.2,-12.2,-12.2,-12.2,-35);
+            golift(-5,.9);
             //drop cone at high 1
+            sleep(1);
             letgogirl();
-            gyroDrive(DRIVE_SPEED,14,14,14,14,-50);
-            gyroTurn(.6,0);
-            golift(-60, .5);
-            gyroDrive(.7, -50, -50, -50, -50,0);
-            gyroDrive(.4, -8, -8, -8, -8,0);
-            golift(-12,.3);
+            golift(5,.9);
+            gyroDrive(DRIVE_SPEED07,14.5,14.5,14.5,14.5,-40);
+            gyroTurn(TURN_SPEED,0);
+            golift(-60, .4);
+            gyroDrive(DRIVE_SPEED08, -50, -50, -50, -50,0);
+            gyroDrive(DRIVE_SPEED05, -12, -12, -12, -12,0);
+            findline();
+            golift(-12,.4);
             getitgirl();
             golift(74, .8);
-            gyroDrive(DRIVE_SPEED, 39, 39, 39, 39,0);
-            gyroTurn(.6, -81);
-            gyroDrive(DRIVE_SPEED,-6,-6,-6,-6,-81);
-            sleep(300);
+            gyroDrive(DRIVE_SPEED07, 40.8, 40.8, 40.8, 40.8,0);
+            gyroTurn(TURN_SPEED, -81);
+            gyroDrive(DRIVE_SPEED07,-6,-6,-6,-6,-81);
+            golift(-5,.9);
+            sleep(150);
             //drop cone at high 2
             letgogirl();
-            gyroDrive(DRIVE_SPEED,5,5,5,5,-81);
+            golift(5,.9);
+            gyroDrive(DRIVE_SPEED07,7.3,7.3,7.3,7.3,-81);
             golift(-60,.5);
-            gyroTurn(.6,-1);
-            gyroDrive(.7, -40, -40, -40, -40,1);
-            gyroDrive(.4, -8, -8, -8, -8,1);
-            golift(-15,.3);
+            gyroTurn(TURN_SPEED,0);
+            gyroDrive(DRIVE_SPEED08, -40, -40, -40, -40,0);
+            gyroDrive(DRIVE_SPEED05, -8, -8, -8, -8,0);
+            golift(-16,.3);
             getitgirl();
-            golift(35, .8);
-            gyroDrive(DRIVE_SPEED, 52, 52, 52, 52,0);
-
-
-            //with strafing
-//            gyroDrive(DRIVE_SPEED, 23, 23, 23, 23, 0);
-//            strafeToPosition(-59, .5);
-//            gyroTurn(TURN_SPEED, 0);
-//            golift(85, 1);
-//            strafeToPosition(-31, .4);
-//            gyroDrive(DRIVE_SPEED, -8, -8, -8, -8, 0);
-//            sleep(100);
-//            letgogirl();
-//            gyroDrive(DRIVE_SPEED, 5, 5,5,5,0);
-//            strafeToPosition(22, .2);
-//            golift(-60, .4);
-//            gyroDrive(.3, -60, -60, -60, -60,0);
-//            golift(-11,.3);
-//            getitgirl();
-//            golift(74, .8);
-//            gyroDrive(DRIVE_SPEED, 56, 56, 56, 56,0);
-//            gyroTurn(.2,0);
-//            strafeToPosition(-21, .3);
-//            gyroTurn(.2,0);
-//            gyroDrive(.2, -3.7, -3.7, -3.7, -3.7, 0);
-//            sleep(100);
-//            letgogirl();
-//            gyroDrive(DRIVE_SPEED, 5, 5,5,5,0);
-//            strafeToPosition(21, .3);
-
+            golift(75, .9);
+            gyroDrive(DRIVE_SPEED08, 40.5, 40.5, 40.5, 40.5,0);
+            gyroTurn(TURN_SPEED, -80);
+            gyroDrive(1,-5.7,-5.7,-5.7,-5.7,-80);
+            golift(-5,.9);
+            letgogirl();
+            golift(5,.9);
+            gyroDrive(1,6,6,6,6,-80);
+            strafeToPosition(-18,.9);
 
         }
 
 
+    }
+
+    public void findline(){
+        while (color.blue() <= 280) {
+            backright.setPower(-.1);
+            backleft.setPower(.1);
+            frontright.setPower(.1);
+            frontleft.setPower(-.1);
+        }
+        backright.setPower(0);
+        backleft.setPower(0);
+        frontright.setPower(0);
+        frontleft.setPower(0);
     }
 
     public void drivebackrightandfrontleft(double inches, double speed) {
@@ -853,6 +722,6 @@ public class AutoLeftFast extends LinearOpMode {
      * @return
      */
     public double getSteer(double error, double PCoeff) {
-        return Range.clip(error * PCoeff, -DRIVE_SPEED, 1);
+        return Range.clip(error * PCoeff, -DRIVE_SPEED07, 1);
     }
 }
