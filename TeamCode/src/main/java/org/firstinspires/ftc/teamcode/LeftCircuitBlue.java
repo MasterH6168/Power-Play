@@ -1,23 +1,34 @@
 package org.firstinspires.ftc.teamcode;
 
+import android.app.Activity;
+import android.graphics.Color;
+import android.view.View;
+
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
+import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
+import com.qualcomm.robotcore.hardware.NormalizedRGBA;
+import com.qualcomm.robotcore.hardware.SwitchableLight;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 
+import org.firstinspires.ftc.robotcontroller.external.samples.SensorColor;
 import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-@Autonomous(name="LeftFast")
-public class LeftFast extends LinearOpMode {
+@Autonomous(name="LeftCircuitBlue")
+public class LeftCircuitBlue extends LinearOpMode {
 
     DcMotor frontleft;
     DcMotor frontright;
@@ -134,12 +145,8 @@ public class LeftFast extends LinearOpMode {
 
         waitForStart();
 
-        telemetry.addData("Red", detector.one);
-        telemetry.addData("Green", detector.two);
-        telemetry.addData("Blue", detector.red);
-        telemetry.update();
 
-        //pos strafe = left strafing
+        //neg strafe = left strafing
         //high =
         //mid =
         //low =
@@ -147,6 +154,7 @@ public class LeftFast extends LinearOpMode {
 
 
         if (detector.one == true) {
+
 
             //no strafing
             gyroDrive(DRIVE_SPEED07,12 ,12,12,12,0);
@@ -160,9 +168,7 @@ public class LeftFast extends LinearOpMode {
 
             //drop cone at high 1
             sleep(1);
-            golift(-5,.7);
             letgogirl();
-            golift(5,.7);
             gyroDrive(DRIVE_SPEED07,13,13,13,13,-52);
             gyroTurn(TURN_SPEED,0);
             golift(-60, .5);
@@ -172,34 +178,41 @@ public class LeftFast extends LinearOpMode {
             golift(-12,.4);
             getitgirl();
             golift(74, .8);
-            gyroDrive(DRIVE_SPEED07, 40, 40, 40, 40,0);
+            gyroDrive(DRIVE_SPEED07, 40.8, 40.8, 40.8, 40.5,0);
             gyroTurn(TURN_SPEED, -81);
-            gyroDrive(DRIVE_SPEED07,-7,-7,-7,-7,-81);
-            sleep(700);
+            gyroDrive(DRIVE_SPEED07,-5.2,-5.2,-5.2,-5.2,-81);
+            sleep(50);
             //drop cone at high 2
-            golift(-5,.7);
             letgogirl();
-            golift(5,.7);
             sleep(1);
-            gyroDrive(DRIVE_SPEED07,7.7,7.7,7.7,7.7,-81);
+            gyroDrive(DRIVE_SPEED07,5.3,5.3,5.3,5.3,-81);
             golift(-60,.5);
             gyroTurn(TURN_SPEED,0);
             gyroDrive(DRIVE_SPEED08, -40, -40, -40, -40,0);
             gyroDrive(DRIVE_SPEED05, -8, -8, -8, -8,0);
             golift(-16,.3);
             getitgirl();
-            golift(75, .9);
-            gyroDrive(DRIVE_SPEED08, 40.3, 40.3, 40.3, 40.3,0);
-            gyroTurn(TURN_SPEED, -80);
-            gyroDrive(1,-6.8,-6.8,-6.8,-6.8,-80);
-            sleep(200);
-            golift(-5,.7);
+            golift(24,.6);
+            gyroDrive(DRIVE_SPEED07, 10, 10, 10, 10,0);
+            gyroTurn(TURN_SPEED,115);
+            gyroDrive(DRIVE_SPEED05, -8, -8, -8, -8,115);
             letgogirl();
-            gyroDrive(1,7,7,7,7,-80);
-            strafeToPosition(55,1);
-            gyroDrive(1,-4,-4,-4,-4,-80);
+            gyroDrive(DRIVE_SPEED05, 8, 8, 8, 8,115);
+            gyroTurn(TURN_SPEED,0);
+            golift(-25,.4);
+            gyroDrive(DRIVE_SPEED07, -10, -10, -10, -10,0);
+            getitgirl();
 
 
+
+
+//            golift(22,.6);
+//            gyroDrive(DRIVE_SPEED08, 10, 10, 10, 10,0);
+//            gyroTurn(TURN_SPEED,117);
+//            gyroDrive(DRIVE_SPEED08,-8.5,-8.5,-8.5,-8.5,114);
+//            letgogirl();
+//            gyroDrive(DRIVE_SPEED08,8.5,8.5,8.5,8.5,114);
+//            gyroDrive(DRIVE_SPEED08, 7, 7, 7, 7,0);
 
 
 
@@ -210,6 +223,7 @@ public class LeftFast extends LinearOpMode {
 
 
         } else if (detector.two == true) {
+
             //no strafing
             gyroDrive(DRIVE_SPEED07,12 ,12,12,12,0);
             drivebackrightandfrontleft(-32,DRIVE_SPEED07);
@@ -222,9 +236,8 @@ public class LeftFast extends LinearOpMode {
 
             //drop cone at high 1
             sleep(1);
-            golift(-5,.7);
             letgogirl();
-            golift(5,.7);
+
             gyroDrive(DRIVE_SPEED07,13,13,13,13,-52);
             gyroTurn(TURN_SPEED,0);
             golift(-60, .5);
@@ -234,33 +247,30 @@ public class LeftFast extends LinearOpMode {
             golift(-12,.4);
             getitgirl();
             golift(74, .8);
-            gyroDrive(DRIVE_SPEED07, 39.8, 39.8, 39.8, 39.8,0);
+            gyroDrive(DRIVE_SPEED07, 40.8, 40.8, 40.8, 40.8,0);
             gyroTurn(TURN_SPEED, -81);
-            gyroDrive(DRIVE_SPEED07,-6.5,-6.5,-6.5,-6.5,-81);
-            sleep(700);
+            gyroDrive(DRIVE_SPEED07,-5.2,-5.2,-5.2,-5.2,-81);
+            sleep(50);
             //drop cone at high 2
-            golift(-5,.7);
             letgogirl();
-            golift(5,.7);
             sleep(1);
-            gyroDrive(DRIVE_SPEED07,7.5,7.5,7.5,7.5,-81);
+            gyroDrive(DRIVE_SPEED07,5.3,5.3,5.3,5.3,-81);
             golift(-60,.5);
             gyroTurn(TURN_SPEED,0);
             gyroDrive(DRIVE_SPEED08, -40, -40, -40, -40,0);
             gyroDrive(DRIVE_SPEED05, -8, -8, -8, -8,0);
-            golift(-16,.3);
+            golift(-17,.4);
             getitgirl();
-            golift(75, .9);
-            gyroDrive(DRIVE_SPEED08, 40, 40, 40, 40,0);
-            gyroTurn(TURN_SPEED, -80);
-            gyroDrive(1,-6.7,-6.7,-6.7,-6.7,-80);
-            golift(-5,.7);
-            sleep(10);
+            golift(25,.9);
+            sleep(1);
+            gyroDrive(DRIVE_SPEED07, 10, 10, 10, 10,0);
+            gyroTurn(TURN_SPEED,115);
+            gyroDrive(DRIVE_SPEED07, -8, -8, -8, -8,115);
             letgogirl();
-            golift(5,.7);
-            gyroDrive(1,7,7,7,7,-80);
-            strafeToPosition(23,DRIVE_SPEED08);
-            gyroDrive(1,3,3,3,3,-80);
+            gyroDrive(1, 6, 6, 6, 6,115);
+            gyroTurn(1,0);
+            gyroDrive(1, 14, 14, 14, 14,0);
+            gyroTurn(1, 90);
 
 
 
@@ -280,9 +290,7 @@ public class LeftFast extends LinearOpMode {
 
             //drop cone at high 1
             sleep(1);
-            golift(-5,.7);
             letgogirl();
-            golift(5,.7);
             gyroDrive(DRIVE_SPEED07,13,13,13,13,-52);
             gyroTurn(TURN_SPEED,0);
             golift(-60, .5);
@@ -292,16 +300,14 @@ public class LeftFast extends LinearOpMode {
             golift(-12,.4);
             getitgirl();
             golift(74, .8);
-            gyroDrive(DRIVE_SPEED07, 40, 40, 40, 40,0);
+            gyroDrive(DRIVE_SPEED07, 40.8, 40.8, 40.8, 40.8,0);
             gyroTurn(TURN_SPEED, -81);
-            gyroDrive(DRIVE_SPEED07,-7,-7,-7,-7,-81);
-            sleep(700);
+            gyroDrive(DRIVE_SPEED07,-5.2,-5.2,-5.2,-5.2,-81);
+            sleep(50);
             //drop cone at high 2
-            golift(-5,.7);
             letgogirl();
-            golift(5,.7);
             sleep(1);
-            gyroDrive(DRIVE_SPEED07,7.7,7.7,7.7,7.7,-81);
+            gyroDrive(DRIVE_SPEED07,5.3,5.3,5.3,5.3,-81);
             golift(-60,.5);
             gyroTurn(TURN_SPEED,0);
             gyroDrive(DRIVE_SPEED08, -40, -40, -40, -40,0);
@@ -309,20 +315,17 @@ public class LeftFast extends LinearOpMode {
             golift(-16,.3);
             getitgirl();
             golift(75, .9);
-            gyroDrive(DRIVE_SPEED08, 40.3, 40.3, 40.3, 40.3,0);
+            gyroDrive(DRIVE_SPEED08, 40.5, 40.5, 40.5, 40.5,0);
             gyroTurn(TURN_SPEED, -80);
-            gyroDrive(1,-6.8,-6.8,-6.8,-6.8,-80);
-            sleep(200);
-            golift(-5,.7);
+            gyroDrive(1,-6.7,-6.7,-6.7,-6.7,-80);
             letgogirl();
-            golift(5,.7);
-            gyroDrive(1,7.5,7.5,7.5,7.5,-80);
+            gyroDrive(1,7,7,7,7,-80);
             strafeToPosition(-18,.9);
-
         }
 
 
     }
+
 
     public void findline(){
         while (color.blue() <= 280) {
@@ -336,6 +339,7 @@ public class LeftFast extends LinearOpMode {
         frontright.setPower(0);
         frontleft.setPower(0);
     }
+
 
     public void drivebackrightandfrontleft(double inches, double speed) {
 
@@ -381,7 +385,7 @@ public class LeftFast extends LinearOpMode {
         }
         leftgrabber.setPower(-1);
         rightgrabber.setPower(1);
-        sleep(800);
+        sleep(900);
         rightgrabber.setPower(0);
         leftgrabber.setPower(0);
     }
@@ -392,7 +396,7 @@ public class LeftFast extends LinearOpMode {
         }
         leftgrabber.setPower(.7);
         rightgrabber.setPower(-.7);
-        sleep(1200);
+        sleep(1100);
         rightgrabber.setPower(0);
         leftgrabber.setPower(0);
     }
@@ -686,11 +690,11 @@ public class LeftFast extends LinearOpMode {
                 backright.setPower(backRightSpeed);
 
                 // Display drive status for the driver.
-                telemetry.addData("Err/St", "%5.1f/%5.1f", error, steer);
-                telemetry.addData("Target", "%7d:%7d", newBackLeftTarget, newBackRightTarget, newFrontLeftTarget, newFrontRightTarget);
-                telemetry.addData("Actual", "%7d:%7d", backleft.getCurrentPosition(), backright.getCurrentPosition(), frontleft.getCurrentPosition(), frontright.getCurrentPosition());
-                telemetry.addData("Speed", "%5.2f:%5.2f", backLeftSpeed, backRightSpeed, frontLeftSpeed, frontRightSpeed);
-                telemetry.update();
+//                telemetry.addData("Err/St", "%5.1f/%5.1f", error, steer);
+//                telemetry.addData("Target", "%7d:%7d", newBackLeftTarget, newBackRightTarget, newFrontLeftTarget, newFrontRightTarget);
+//                telemetry.addData("Actual", "%7d:%7d", backleft.getCurrentPosition(), backright.getCurrentPosition(), frontleft.getCurrentPosition(), frontright.getCurrentPosition());
+//                telemetry.addData("Speed", "%5.2f:%5.2f", backLeftSpeed, backRightSpeed, frontLeftSpeed, frontRightSpeed);
+//                telemetry.update();
 
                 ErrorAmount = ((Math.abs(((newBackLeftTarget) - (backleft.getCurrentPosition())))
                         + (Math.abs(((newFrontLeftTarget) - (frontleft.getCurrentPosition()))))
@@ -836,6 +840,6 @@ public class LeftFast extends LinearOpMode {
      * @return
      */
     public double getSteer(double error, double PCoeff) {
-        return Range.clip(error * PCoeff, -DRIVE_SPEED07, 1);
+        return Range.clip(error * PCoeff, -DRIVE_SPEED08, 1);
     }
 }

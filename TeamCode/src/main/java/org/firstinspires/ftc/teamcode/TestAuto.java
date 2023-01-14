@@ -136,7 +136,7 @@ public class TestAuto extends LinearOpMode {
         leftgrabber.setPower(0);
         rightgrabber.setPower(0);
 
-        RightVision detector = new RightVision(this);
+        VisionRight detector = new VisionRight(this);
 
 
         telemetry.addLine("Start Gyro");
