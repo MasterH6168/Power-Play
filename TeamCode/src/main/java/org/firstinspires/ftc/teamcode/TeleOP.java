@@ -13,8 +13,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 
 
-@TeleOp(name="teleOP")
-public class teleOP extends OpMode {
+@TeleOp(name="TeleOP")
+public class TeleOP extends OpMode {
 
 
     public DcMotor backleft;

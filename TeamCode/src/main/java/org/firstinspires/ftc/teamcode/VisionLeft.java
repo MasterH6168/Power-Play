@@ -14,7 +14,7 @@ import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvPipeline;
 
-public class LeftVision {
+public class VisionLeft {
     OpMode opMode;
     OpenCvCamera camera;
 
@@ -37,7 +37,7 @@ public class LeftVision {
     boolean one = false, two = false, three = false;
 
 
-    public LeftVision(OpMode op){
+    public VisionLeft(OpMode op){
 
         opMode = op;
 

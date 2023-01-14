@@ -16,7 +16,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 @Autonomous(name="Right")
-public class AutoRight extends LinearOpMode {
+public class Right extends LinearOpMode {
 
     DcMotor frontleft;
     DcMotor frontright;
@@ -115,7 +115,7 @@ public class AutoRight extends LinearOpMode {
         leftgrabber.setPower(0);
         rightgrabber.setPower(0);
 
-        RightVision detector = new RightVision(this);
+        VisionRight detector = new VisionRight(this);
 
 
         telemetry.addLine("Start Gyro");
