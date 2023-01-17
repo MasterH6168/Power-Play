@@ -20,8 +20,8 @@ public class VisionLeft {
 
     AddBoxesPipeline pipeline;
 
-    private final Point centerBox_topLeft    = new Point(180,75);
-    private final Point centerBox_bottomRight    = new Point(225, 140);
+    private final Point centerBox_topLeft    = new Point(185,75);
+    private final Point centerBox_bottomRight    = new Point(230, 140);
 
 //    private final Point centerBox_topLeft    = new Point(230,30);
 //    private final Point centerBox_bottomRight    = new Point(190, 100);
@@ -96,13 +96,13 @@ public class VisionLeft {
 //            opMode.telemetry.addData("BLUE: ", blue_avg);
 //            opMode.telemetry.update();
 
-            if(red_avg >= 90){
+            if(red_avg >= 110){
                 one = true;
                 two = false;
                 three = false;
             }
 
-            else if(blue_avg >= 90){
+            else if(blue_avg >= 110){
                 one = false;
                 two = false;
                 three = true;

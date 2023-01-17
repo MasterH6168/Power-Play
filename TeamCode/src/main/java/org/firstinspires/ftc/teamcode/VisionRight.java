@@ -97,13 +97,13 @@ public class VisionRight {
 //            opMode.telemetry.addData("BLUE: ", blue_avg);
 //            opMode.telemetry.update();
 
-            if(red_avg >= 90){
+            if(red_avg >= 110){
                 one = true;
                 two = false;
                 three = false;
             }
 
-            else if(blue_avg >= 90){
+            else if(blue_avg >= 110){
                 one = false;
                 two = false;
                 three = true;

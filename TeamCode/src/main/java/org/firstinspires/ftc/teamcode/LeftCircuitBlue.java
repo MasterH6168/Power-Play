@@ -232,7 +232,7 @@ public class LeftCircuitBlue extends LinearOpMode {
             golift(86,.9);
             gyroDrive(DRIVE_SPEED07,-24,-24,-24,-24,-82);
             gyroTurn(TURN_SPEED, -52);
-            gyroDrive(DRIVE_SPEED07,-11,-11,-11,-11,-52);
+            gyroDrive(DRIVE_SPEED07,-11,-11,-11,-11,-35);
 
             //drop cone at high 1
             sleep(1);

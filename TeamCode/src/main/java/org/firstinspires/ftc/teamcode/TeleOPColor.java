@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 
 
-@TeleOp(name="ColorTeleOP")
+@TeleOp(name="ColorTeleOP", group = "Sensor")
 public class TeleOPColor extends OpMode {
 
     ColorSensor color;
