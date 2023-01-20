@@ -32,6 +32,11 @@ public class TeleOP extends OpMode {
     public boolean dpadLeftIsHeld = false;
     public boolean dpadRightIsHeld = false;
 
+    public double max_lift = 95;
+    public double min_lift = -1;
+
+
+
 
     @Override
     public void init() {
@@ -83,6 +88,10 @@ public class TeleOP extends OpMode {
         lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftgrabber.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightgrabber.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+
+
+//        lift.setTargetPosition(95);
 
 
         backleft.setPower(0);
@@ -188,6 +197,22 @@ public class TeleOP extends OpMode {
             } else {
                 lift.setPower(0);
             }
+//
+//
+//            gamepad2.left_stick_y = leftgrabber.getCurrentPosition();
+//
+//            if (lift.isBusy()) {
+//                lift.setPower(0);
+//            }
+
+
+            //lift max (idk if it works)
+//            if(gamepad2.left_stick_y > 0.3 && lift.getCurrentPosition() >= 95){
+//                lift.setPower(0);
+//            }
+
+
+
 
 
             //wormhole in
@@ -205,6 +230,7 @@ public class TeleOP extends OpMode {
                 rightgrabber.setPower(0);
 
             }
+
 
 
         }
