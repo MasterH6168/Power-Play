@@ -113,6 +113,9 @@ public class TeleOP extends OpMode {
     @Override
     public void loop() {
 
+        telemetry.addData("Lift", lift.getCurrentPosition());
+        telemetry.update();
+
         //Slow Mode Code for a and b keys
         if (gamepad1.a) {
             speedMode = .4;
@@ -207,9 +210,9 @@ public class TeleOP extends OpMode {
 
 
             //lift max (idk if it works)
-//            if(gamepad2.left_stick_y > 0.3 && lift.getCurrentPosition() >= 95){
-//                lift.setPower(0);
-//            }
+            if(lift.getCurrentPosition() <= -2800){
+                lift.setPower(0);
+            }
 
 
 

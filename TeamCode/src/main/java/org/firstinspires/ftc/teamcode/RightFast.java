@@ -58,6 +58,9 @@ public class RightFast extends LinearOpMode {
     public static double   MAX_ACCEPTABLE_ERROR = 10;
 
     double TURN_SPEED = 0.65;
+    double TURN_SPEED_FIX = 0.3;
+    double TIME = 0.2;
+
 
     Double conversion = cpi * bias;
     Boolean exit = false;
@@ -65,6 +68,8 @@ public class RightFast extends LinearOpMode {
     BNO055IMU imu;
     Orientation angles;
     Acceleration gravity;
+
+    private ElapsedTime runtime = new ElapsedTime();
 
     public void runOpMode() throws InterruptedException {
 
@@ -154,31 +159,81 @@ public class RightFast extends LinearOpMode {
 
 
 
+
         if (detector.one == true) {
 
 
-            moveToPosition(14, DRIVE_SPEED07);
 
+
+
+            gyroDrive(DRIVE_SPEED07,11,11,11,11,0);
             drivebackleftandfrontright(32,DRIVE_SPEED05);
             gyroTurn(TURN_SPEED, 88);
-            moveToPosition(-12,DRIVE_SPEED07);
-            golift(86,1);
-            moveToPosition(-32,DRIVE_SPEED07);
-            gyroTurn(TURN_SPEED, 49);
-            moveToPosition(-14.5,DRIVE_SPEED07);
+            gyroHold(TURN_SPEED_FIX,88, TIME);
+            gyroDrive(DRIVE_SPEED07,-13,-13,-13,-13,88);
+            golift(32,1);
+            gyroHold(TURN_SPEED_FIX,88, TIME);
+            gyroDrive(DRIVE_SPEED07,-34,-34,-34,-34,88);
+            gyroTurn(TURN_SPEED, 39.5);
+            gyroHold(TURN_SPEED_FIX,39, TIME);
+            gyroDrive(DRIVE_SPEED07,-9.8,-9.8,-9.8,-9.8,39);
+
+
+//            //drop cone at high 1
             golift(-5,.7);
             letgogirl();
             golift(5,.7);
-            moveToPosition(14,DRIVE_SPEED07);
-            gyroTurn(0,0.7);
-            moveToPosition(-65,DRIVE_SPEED07);
+            gyroDrive(DRIVE_SPEED07,9.8,9.8,9.8,9.8,40);
+            gyroHold(TURN_SPEED_FIX,41, TIME);
+            golift(-21, .6);
+            gyroTurn(TURN_SPEED,0);
+            gyroHold(TURN_SPEED_FIX,0, TIME);
+            gyroDrive(DRIVE_SPEED08, -55, -55, -55, -55,0);
+            gyroDrive(DRIVE_SPEED05, -5, -5, -5, -5,0);
+            findline();
+            golift(-7,.6);
+            getitgirl();
+            golift(25, .9);
+            gyroDrive(DRIVE_SPEED07, 22, 22, 22, 22,0);
+            gyroHold(TURN_SPEED_FIX,0, TIME);
+            gyroTurn(TURN_SPEED, 141);
+            gyroHold(TURN_SPEED_FIX,141, TIME);
 
-
-            //           moveToPosition(13, DRIVE_SPEED07);
-//            golift(86,1);
-//            gyroDrive(DRIVE_SPEED07,-34,-34,-34,-34,88);
-
+            gyroDrive(DRIVE_SPEED07,-13,-13,-13,-13,141);
 //
+//            //drop cone at high 2
+            golift(-8,.7);
+            letgogirl();
+            golift(8,.7);
+
+            gyroDrive(DRIVE_SPEED07,-13,-13,-13,-13,141);
+//            golift(-60,.7);
+//            gyroTurn(TURN_SPEED,2);
+//            gyroDrive(DRIVE_SPEED07, -25, -25, -25, -25,2);
+//
+//            golift(-18,.7);
+//            getitgirl();
+//            golift(78, .9);
+//            gyroDrive(DRIVE_SPEED07, 22, 22, 22, 22,1);
+//            sensewall2();
+//            gyroTurn(TURN_SPEED, 138.5);
+//            gyroDrive(DRIVE_SPEED07,-13.6,-13.6,-13.6,-13.6,138.5);
+//
+//            golift(-7,.7);
+//            letgogirl();
+//            golift(7,1);
+//            gyroDrive(DRIVE_SPEED08,12,12,12,12,140);
+//            gyroTurn(1, -180);
+//            golift(-60,1);
+//            gyroDrive(1,-25,-25,-25,-25,-180);
+//
+//
+
+
+
+
+        } else if (detector.two == true) {
+
 //            gyroDrive(DRIVE_SPEED07,11,11,11,11,0);
 //            sensewall1();
 //            drivebackleftandfrontright(32,DRIVE_SPEED05);
@@ -207,39 +262,6 @@ public class RightFast extends LinearOpMode {
 //            sensewall2();
 //            gyroTurn(TURN_SPEED, 138.5);
 //            gyroDrive(DRIVE_SPEED07,-13.6,-13.6,-13.6,-13.6,138.5);
-//
-//            //drop cone at high 2
-//            golift(-8,.7);
-//            letgogirl();
-//            golift(8,.7);
-//
-//            gyroDrive(DRIVE_SPEED07,13.6,13.6,13.6,13.6,138);
-//            golift(-60,.7);
-//            gyroTurn(TURN_SPEED,2);
-//            gyroDrive(DRIVE_SPEED07, -25, -25, -25, -25,2);
-//
-//            golift(-18,.7);
-//            getitgirl();
-//            golift(78, .9);
-//            gyroDrive(DRIVE_SPEED07, 22, 22, 22, 22,1);
-//            sensewall2();
-//            gyroTurn(TURN_SPEED, 138.5);
-//            gyroDrive(DRIVE_SPEED07,-13.6,-13.6,-13.6,-13.6,138.5);
-//
-//            golift(-7,.7);
-//            letgogirl();
-//            golift(7,1);
-//            gyroDrive(DRIVE_SPEED08,12,12,12,12,140);
-//            gyroTurn(1, -180);
-//            golift(-60,1);
-//            gyroDrive(1,-25,-25,-25,-25,-180);
-//
-//
-
-
-
-
-        } else if (detector.two == true) {
 
 
 
@@ -252,13 +274,20 @@ public class RightFast extends LinearOpMode {
 
     }
 
-    public void rangeDrive (double speed, double backDistance, double sideDistance, LinearOpMode opmode) {
+
+
+
+
+
+
+
+    public void rangeDrive (double speed, double backDistance, LinearOpMode opmode) {
 
         speed = Range.clip(Math.abs(speed), 0.0, 1.0);
 
-        if (backDistance != -1) {
-            while (rangebrothers.getDistance(DistanceUnit.INCH) < backDistance) {
-                if (Math.abs(rangebrothers.getDistance(DistanceUnit.INCH) - backDistance) > MAX_ACCEPTABLE_ERROR) {
+        if (rangebrothers.getDistance(DistanceUnit.INCH) >= backDistance) {
+            while (rangebrothers.getDistance(DistanceUnit.INCH) >= backDistance) {
+                if (Math.abs(rangebrothers.getDistance(DistanceUnit.INCH) - backDistance) == MAX_ACCEPTABLE_ERROR) {
                     if (!rangeCheck(rangebrothers, backDistance, opmode)) {
                         break;
                     }
@@ -343,7 +372,7 @@ public class RightFast extends LinearOpMode {
 
 
     public void findline(){
-        while (color.blue() <= 305) {
+        while (color.blue() <= 290) {
             backright.setPower(-.1);
             backleft.setPower(.1);
             frontright.setPower(.1);
@@ -392,34 +421,42 @@ public class RightFast extends LinearOpMode {
         frontleft.setPower(0);
         backright.setPower(0);
         backleft.setPower(0);
+        frontright.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        frontleft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        backright.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        backleft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         return;
+
+
     }
 
-    public void drivebackrightandfrontleft(double inches, double speed) {
+
+
+    public void TURNPLEASE(double inches, double speed) {
 
         //
         int move = (int) (Math.round(inches * cpi * meccyBias));
         //
-        backleft.setTargetPosition(backleft.getCurrentPosition() - move);
-        //frontleft.setTargetPosition(frontleft.getCurrentPosition() + move);
-        //backright.setTargetPosition(backright.getCurrentPosition() + move);
+        backleft.setTargetPosition(backleft.getCurrentPosition() + move);
+        frontleft.setTargetPosition(frontleft.getCurrentPosition() + move);
+        backright.setTargetPosition(backright.getCurrentPosition() - move);
         frontright.setTargetPosition(frontright.getCurrentPosition() - move);
         //
-        //frontleft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        frontleft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         frontright.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         backleft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        //backright.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        backright.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         //
-        //frontleft.setPower(speed);
+        frontleft.setPower(speed);
         backleft.setPower(speed);
         frontright.setPower(speed);
-        //backright.setPower(speed);
+        backright.setPower(speed);
         //
         while ( frontright.isBusy() && backleft.isBusy()) {
         }
         frontright.setPower(0);
-        //frontleft.setPower(0);
-        //backright.setPower(0);
+        frontleft.setPower(0);
+        backright.setPower(0);
         backleft.setPower(0);
         return;
 
@@ -458,11 +495,19 @@ public class RightFast extends LinearOpMode {
 
 
     public void golift(double inches, double speed){
-        int move =  -(int)(Math.round(inches*conversion));
+
+        telemetry.addData("Encodercount", lift.getCurrentPosition() );
+        telemetry.update();
+        lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        int move =  -(int)(Math.round(inches*93.3));
 
         lift.setTargetPosition(lift.getCurrentPosition() + move);
         lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         lift.setPower(speed);
+
+
+
 
     }
 
@@ -777,11 +822,11 @@ public class RightFast extends LinearOpMode {
                 backright.setPower(backRightSpeed);
 
                 // Display drive status for the driver.
-                telemetry.addData("Err/St", "%5.1f/%5.1f", error, steer);
-                telemetry.addData("Target", "%7d:%7d", newBackLeftTarget, newBackRightTarget, newFrontLeftTarget, newFrontRightTarget);
-                telemetry.addData("Actual", "%7d:%7d", backleft.getCurrentPosition(), backright.getCurrentPosition(), frontleft.getCurrentPosition(), frontright.getCurrentPosition());
-                telemetry.addData("Speed", "%5.2f:%5.2f", backLeftSpeed, backRightSpeed, frontLeftSpeed, frontRightSpeed);
-                telemetry.update();
+//                telemetry.addData("Err/St", "%5.1f/%5.1f", error, steer);
+//                telemetry.addData("Target", "%7d:%7d", newBackLeftTarget, newBackRightTarget, newFrontLeftTarget, newFrontRightTarget);
+//                telemetry.addData("Actual", "%7d:%7d", backleft.getCurrentPosition(), backright.getCurrentPosition(), frontleft.getCurrentPosition(), frontright.getCurrentPosition());
+//                telemetry.addData("Speed", "%5.2f:%5.2f", backLeftSpeed, backRightSpeed, frontLeftSpeed, frontRightSpeed);
+//                telemetry.update();
 
                 ErrorAmount = ((Math.abs(((newBackLeftTarget) - (backleft.getCurrentPosition())))
                         + (Math.abs(((newFrontLeftTarget) - (frontleft.getCurrentPosition()))))
@@ -822,10 +867,6 @@ public class RightFast extends LinearOpMode {
         frontright.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         backright.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        frontleft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        frontright.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        backleft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        backright.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
     /**
@@ -900,9 +941,9 @@ public class RightFast extends LinearOpMode {
         frontright.setPower(rightSpeed);
 
         // Display it for the driver.
-        telemetry.addData("Target", "%5.2f", angle);
-        telemetry.addData("Err/St", "%5.2f/%5.2f", error, steer);
-        telemetry.addData("Speed.", "%5.2f:%5.2f", leftSpeed, rightSpeed);
+//        telemetry.addData("Target", "%5.2f", angle);
+//        telemetry.addData("Err/St", "%5.2f/%5.2f", error, steer);
+//        telemetry.addData("Speed.", "%5.2f:%5.2f", leftSpeed, rightSpeed);
 
         return onTarget;
     }
