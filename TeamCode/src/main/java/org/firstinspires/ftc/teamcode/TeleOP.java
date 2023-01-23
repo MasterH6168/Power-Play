@@ -209,7 +209,7 @@ public class TeleOP extends OpMode {
 //            }
 
 
-            //lift max (idk if it works)
+            //lift limit
             if(lift.getCurrentPosition() <= -2800){
                 lift.setPower(0);
             }
